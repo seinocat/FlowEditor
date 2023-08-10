@@ -3,7 +3,7 @@
 namespace FlowEditor.Editor
 {
     [Serializable]
-    public class EventNodePort { }
+    public class EventNodePort {}
 
     [Serializable]
     public class EventStartPort{}

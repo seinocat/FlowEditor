@@ -12,6 +12,8 @@ namespace FlowEditor.Editor
 {
     public sealed class FileListView : Blackboard
     {
+        public static Vector2 ScrollOffset;
+        
         private FlowGraphView m_GraphView;
         private FlowGraphWindow m_Window;
         private List<FlowGraphBase> m_GraphBases;
@@ -23,8 +25,7 @@ namespace FlowEditor.Editor
         private const string HEIGHT = "FlowEditor_FileList_Heigh";
         private const string POSX = "FlowEditor_FileList_PosX";
         private const string POSY = "FlowEditor_FileList_PosY";
-        public static Vector2 m_Offset;
-
+        
         public FileListView(FlowGraphView graphView)
         {
             this.m_Window = graphView.Window;
@@ -62,7 +63,7 @@ namespace FlowEditor.Editor
         
         public void SetScrollOffset()
         {
-            m_Offset = this.m_Scroll.scrollOffset;
+            ScrollOffset = this.m_Scroll.scrollOffset;
         }
         
         public void OnAddBtnClick(Blackboard blackboard)
@@ -144,7 +145,7 @@ namespace FlowEditor.Editor
             }
             
             //Scroll定位
-            this.m_Scroll.scrollOffset = m_Offset;
+            this.m_Scroll.scrollOffset = ScrollOffset;
         }
 
         public void OnGeometryChanged(GeometryChangedEvent evt)

@@ -85,7 +85,7 @@ namespace FlowEditor.Editor
         public void SetSortType(SortType type)
         {
             Cookie.SetPublic(SORT_TYPE, (int)type);
-            FileListView.m_Offset = Vector2.zero;
+            FileListView.ScrollOffset = Vector2.zero;
             this.SortType = type;
             this.RefreshFiles();
         }
@@ -93,7 +93,7 @@ namespace FlowEditor.Editor
         public void SetOrderType(bool positive)
         {
             Cookie.SetPublic(ORDER_TYPE, positive ? 0 : 1);
-            FileListView.m_Offset = Vector2.zero;
+            FileListView.ScrollOffset = Vector2.zero;
             this.OrderPositive = positive;
             this.RefreshFiles();
         }

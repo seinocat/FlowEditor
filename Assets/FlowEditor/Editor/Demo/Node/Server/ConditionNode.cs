@@ -26,6 +26,7 @@ namespace FlowEditor.Editor
 
         [CustomSetting("成功节点ID"), HideInInspector]
         public int SuccessID;
+        
         [CustomSetting("失败节点ID"), HideInInspector]
         public int FailID;
 
