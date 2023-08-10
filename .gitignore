@@ -68,3 +68,5 @@ crashlytics-build.properties
 
 .vscode/settings.json
 UnityPackageManager/manifest.json
+/Action_UPM_Rebuild.bat
+/Action_UPM_Push.bat
