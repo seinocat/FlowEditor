@@ -154,8 +154,6 @@ namespace FlowEditor.Runtime
 
         [LabelText("事件完成标志")]
         CompleteFlag = 9999999,
-
-
         #endregion
 
     }

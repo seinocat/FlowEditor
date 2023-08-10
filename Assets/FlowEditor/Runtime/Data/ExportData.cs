@@ -28,21 +28,3 @@ namespace FlowEditor.Runtime
     }
 }
 
-namespace FlowEditor.Runtime
-{
-    // [Serializable, ExportData]
-    // public class Vector3 
-    // {
-    //     public float x;
-    //     public float y;
-    //     public float z;
-    // }
-    //
-    // [Serializable, ExportData]
-    // public class Vector2
-    // {
-    //     public float x;
-    //     public float y;
-    // }
-}
-

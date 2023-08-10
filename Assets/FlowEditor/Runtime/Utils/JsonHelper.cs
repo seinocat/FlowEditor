@@ -34,41 +34,5 @@ namespace FlowEditor.Runtime
         {
             return LitJson.JsonMapper.ToJson(data, write_property);
         }
-
-#if UNITY_EDITOR
-        #region 编辑器代码
-
-        /// <summary>
-        /// 将类转换成Json文本文件保存；
-        /// </summary>
-        /// <param name="data"></param>
-        /// <param name="path">保存路径，需要写后缀（*.txt）</param>
-        public static void ConvertToJsonTextAsset(object data, string path)
-        {
-            ConvertToJsonTextAsset_NonRefresh(data, path);
-
-            AssetDatabase.Refresh();
-        }
-
-        public static void ConvertToJsonTextAsset_NonRefresh(object data, string path)
-        {
-            if (data == null) return;
-            if (string.IsNullOrEmpty(path)) return;
-
-            var jsonStr = ToJsonPretty(data, false);
-
-            //保存到本地
-            FileInfo file = new FileInfo(path);
-            if (file.Exists)
-                file.Delete();
-
-            var sm = File.CreateText(path);
-            sm.Write(jsonStr);
-            sm.Close();
-        }
-
-        #endregion
-#endif
-
     }
 }
