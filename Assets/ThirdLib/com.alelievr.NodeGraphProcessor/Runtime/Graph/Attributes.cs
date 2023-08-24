@@ -70,7 +70,7 @@ namespace GraphProcessor
     /// Register the node in the NodeProvider class. The node will also be available in the node creation window.
     /// </summary>
     [AttributeUsage(AttributeTargets.Class, AllowMultiple = true)]
-    public class NodeMenuItemAttribute : Attribute
+    public partial class NodeMenuItemAttribute : Attribute
     {
         public string menuTitle;
         public Type onlyCompatibleWithGraph;
