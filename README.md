@@ -5,13 +5,13 @@
 
 该工程Demo实现了一个用于编辑事件，对话，交互等流程向配置的编辑器。
 
+![image](https://github.com/Svily/FlowEditor/blob/master/Image/flow3.png)
+
+![image](https://github.com/Svily/FlowEditor/blob/master/Image/flow4.png)
+
 事件流程编辑
 ![image](https://github.com/Svily/FlowEditor/blob/master/Image/flow01.png)
 
 交互流程编辑
 ![image](https://github.com/Svily/FlowEditor/blob/master/Image/flow2.png)
 
-文件目录编辑
-![image](https://github.com/Svily/FlowEditor/blob/master/Image/flow3.png)
-
-![image](https://github.com/Svily/FlowEditor/blob/master/Image/flow4.png)
