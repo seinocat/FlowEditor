@@ -5,7 +5,7 @@ using UnityEngine;
 
 namespace FlowEditor.Editor
 {
-    [NodeMenuItem((int)FlowNodeType.ExecuteEvent), GameEventNode, Serializable]
+    [NodeMenuItem((int)FlowNodeType.ExecuteEvent), FlowNode, Serializable]
     public class ExecuteEventNode : ClientNodeBase
     {
         public override string name => NodeGroupHelper.GetName(Type.GetHashCode());

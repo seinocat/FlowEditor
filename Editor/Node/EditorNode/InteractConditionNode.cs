@@ -6,7 +6,7 @@ using GraphProcessor;
 namespace FlowEditor.Editor
 {
 
-    [NodeMenuItem("配置/交互条件配置"), GameEventNode, Serializable]
+    [NodeMenuItem("配置/交互条件配置"), FlowNode, Serializable]
     public class InteractConditionNode : EditorNodeBase
     {
         public override string name => "交互条件配置";

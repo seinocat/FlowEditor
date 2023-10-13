@@ -3,7 +3,7 @@
 namespace FlowEditor.Runtime
 {
     [AttributeUsage(AttributeTargets.Class, AllowMultiple = true)]
-    public class GameEventNodeAttribute : Attribute
+    public class FlowNodeAttribute : Attribute
     {
         
     }

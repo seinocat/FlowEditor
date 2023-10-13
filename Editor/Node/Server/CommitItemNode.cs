@@ -3,7 +3,7 @@ using GraphProcessor;
 
 namespace FlowEditor.Editor
 {
-    [NodeMenuItem((int)FlowNodeType.CommitItem), GameEventNode, System.Serializable]
+    [NodeMenuItem((int)FlowNodeType.CommitItem), FlowNode, System.Serializable]
     public class CommitItemNode : ServerNodeBase
     {
         public override string name => NodeGroupHelper.GetName(Type.GetHashCode());

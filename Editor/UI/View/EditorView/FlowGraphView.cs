@@ -78,7 +78,7 @@ namespace FlowEditor.Editor
         {
             foreach (var nodeMenuItem in NodeProvider.GetNodeMenuEntries(graph))
             {
-                var eventNodeAttr = nodeMenuItem.type.GetCustomAttribute<GameEventNodeAttribute>();
+                var eventNodeAttr = nodeMenuItem.type.GetCustomAttribute<FlowNodeAttribute>();
                 var discardAttr = nodeMenuItem.type.GetCustomAttribute<DiscardNodeAttribute>();
 
                 if (eventNodeAttr != null && discardAttr == null)

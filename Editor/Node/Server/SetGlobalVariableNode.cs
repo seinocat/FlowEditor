@@ -3,7 +3,7 @@ using GraphProcessor;
 
 namespace FlowEditor.Editor
 {
-    [NodeMenuItem((int)FlowNodeType.SetGlobalVariable), GameEventNode, System.Serializable]
+    [NodeMenuItem((int)FlowNodeType.SetGlobalVariable), FlowNode, System.Serializable]
     public class SetGlobalVariableNode : ServerNodeBase
     {
         public override string name => NodeGroupHelper.GetName(Type.GetHashCode());

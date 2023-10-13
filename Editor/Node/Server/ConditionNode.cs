@@ -5,7 +5,7 @@ using UnityEngine;
 
 namespace FlowEditor.Editor
 {
-    [NodeMenuItem((int)FlowNodeType.Condition), GameEventNode, System.Serializable]
+    [NodeMenuItem((int)FlowNodeType.Condition), FlowNode, System.Serializable]
     public class ConditionNode : ServerNodeBase
     {
         public override string name => NodeGroupHelper.GetName(Type.GetHashCode());
