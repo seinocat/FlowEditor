@@ -11,10 +11,10 @@ namespace FlowEditor.Editor
         public override FlowNodeType Type => FlowNodeType.PlayNpcAction;
         
         [Input("In")]
-        public EventNodePort Input;
+        public FlowNodePort Input;
         
         [Output("Out", false)]
-        public EventNodePort Output;
+        public FlowNodePort Output;
         
         [CustomSetting("动作名称")] 
         public string ActionName;

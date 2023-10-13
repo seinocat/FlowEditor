@@ -13,9 +13,9 @@ namespace FlowEditor.Editor
         public override bool TansferParameter => true;
         
         [Input("In")]
-        public EventNodePort Input;
+        public FlowNodePort Input;
         
         [Output("Out", false)]
-        public EventNodePort Output;
+        public FlowNodePort Output;
     }
 }

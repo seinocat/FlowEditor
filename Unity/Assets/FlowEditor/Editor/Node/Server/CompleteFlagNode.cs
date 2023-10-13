@@ -14,9 +14,9 @@ namespace FlowEditor.Editor
         public override Color color => new Color(1f, 0f, 0.02f);
         
         [Input("In")]
-        public EventNodePort Input;
+        public FlowNodePort Input;
         
         [Output("Out", false)]
-        public EventNodePort Output;
+        public FlowNodePort Output;
     }
 }

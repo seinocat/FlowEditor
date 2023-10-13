@@ -12,10 +12,10 @@ namespace FlowEditor.Editor
         public override FlowNodeType Type => FlowNodeType.MessageTip;
         
         [Input("In", true)]
-        public EventNodePort Input;
+        public FlowNodePort Input;
         
         [Output("Out", false)]
-        public EventNodePort Output;
+        public FlowNodePort Output;
 
         [CustomSetting("消息内容"), TextArea] 
         public string Content;

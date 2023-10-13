@@ -16,6 +16,6 @@ namespace FlowEditor.Editor
         public override FlowNodeType Type => FlowNodeType.End;
         
         [Input("End", true)]
-        public EventNodePort Input;
+        public FlowNodePort Input;
     }
 }

@@ -14,7 +14,7 @@ namespace FlowEditor.Editor
         public EditorPort Input;
         
         [Output("Start")]
-        public EventNodePort Output;
+        public FlowNodePort Output;
 
         [CustomSetting("备注")]
         public string desc;

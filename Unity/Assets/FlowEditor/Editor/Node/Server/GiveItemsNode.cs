@@ -12,10 +12,10 @@ namespace FlowEditor.Editor
         public override FlowNodeType Type => FlowNodeType.GiveItems;
         
         [Input("In")]
-        public EventNodePort Input;
+        public FlowNodePort Input;
         
         [Output("Out", false)]
-        public EventNodePort Output;
+        public FlowNodePort Output;
 
         [CustomSetting("道具ID")] 
         public int ItemID;

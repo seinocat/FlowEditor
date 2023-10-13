@@ -3,10 +3,10 @@
 namespace FlowEditor.Editor
 {
     [Serializable]
-    public class EventNodePort {}
+    public class FlowNodePort {}
 
     [Serializable]
-    public class EventStartPort{}
+    public class FlowStartPort{}
     
     [Serializable]
     public class InteractPort{}

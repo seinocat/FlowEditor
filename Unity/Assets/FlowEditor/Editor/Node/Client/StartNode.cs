@@ -15,9 +15,9 @@ namespace FlowEditor.Editor
         public override FlowNodeType Type => FlowNodeType.Start;
         
         [Input("In")]
-        public EventStartPort Input;
+        public FlowStartPort Input;
         
         [Output("Start", false)]
-        public EventNodePort Output;
+        public FlowNodePort Output;
     }
 }
