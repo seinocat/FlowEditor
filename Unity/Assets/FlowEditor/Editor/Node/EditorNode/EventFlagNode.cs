@@ -7,7 +7,7 @@ using UnityEngine;
 namespace FlowEditor.Editor
 {
 
-    [NodeMenuItem("配置/事件配置"), GameEventNode, Serializable]
+    [NodeMenuItem("配置/事件配置"), FlowNode, Serializable]
     public class EventFlagNode : EditorNodeBase
     {
         public override string name => "事件配置";

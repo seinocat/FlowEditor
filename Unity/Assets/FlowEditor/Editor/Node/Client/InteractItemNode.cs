@@ -7,7 +7,7 @@ using UnityEngine;
 namespace FlowEditor.Editor
 {
 
-    [NodeMenuItem((int)FlowNodeType.InteractItem), GameEventNode, Serializable]
+    [NodeMenuItem((int)FlowNodeType.InteractItem), FlowNode, Serializable]
     public class InteractItemNode : InteractNodeBase
     {
         public override Color color => new Color(0.05f, 0.7f, 0.15f);

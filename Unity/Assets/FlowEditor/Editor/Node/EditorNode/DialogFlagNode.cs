@@ -6,7 +6,7 @@ using GraphProcessor;
 namespace FlowEditor.Editor
 {
 
-    [NodeMenuItem("配置/对话配置"), GameEventNode, Serializable]
+    [NodeMenuItem("配置/对话配置"), FlowNode, Serializable]
     public class DialogFlagNode : EditorNodeBase
     {
         public override string name => "对话配置";

@@ -6,7 +6,7 @@ using UnityEngine;
 namespace FlowEditor.Editor
 {
 
-    [NodeMenuItem((int)FlowNodeType.End), GameEventNode, Serializable]
+    [NodeMenuItem((int)FlowNodeType.End), FlowNode, Serializable]
     public class EndNode : ClientNodeBase
     {
         public override Color color => new Color(1f, 0.42f, 0f);

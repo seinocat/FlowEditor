@@ -7,7 +7,7 @@ using UnityEngine;
 
 namespace FlowEditor.Editor
 {
-    [NodeMenuItem((int)FlowNodeType.SelectBranch), GameEventNode, System.Serializable]
+    [NodeMenuItem((int)FlowNodeType.SelectBranch), FlowNode, System.Serializable]
     public class SelectBranchNode : ServerNodeBase
     {
         public override string name => NodeGroupHelper.GetName(Type.GetHashCode());

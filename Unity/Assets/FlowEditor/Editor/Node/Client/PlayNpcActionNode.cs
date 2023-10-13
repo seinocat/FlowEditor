@@ -3,7 +3,7 @@ using GraphProcessor;
 
 namespace FlowEditor.Editor
 {
-    [NodeMenuItem((int)FlowNodeType.PlayNpcAction), GameEventNode, System.Serializable]
+    [NodeMenuItem((int)FlowNodeType.PlayNpcAction), FlowNode, System.Serializable]
     public class PlayNpcActionNode : ClientNodeBase
     {
         public override string name => NodeGroupHelper.GetName(Type.GetHashCode());

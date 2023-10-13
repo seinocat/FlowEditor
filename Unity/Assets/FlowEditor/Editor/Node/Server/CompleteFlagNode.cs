@@ -4,7 +4,7 @@ using UnityEngine;
 
 namespace FlowEditor.Editor
 {
-    [NodeMenuItem((int)FlowNodeType.CompleteFlag), GameEventNode, System.Serializable]
+    [NodeMenuItem((int)FlowNodeType.CompleteFlag), FlowNode, System.Serializable]
     public class CompleteFlagNode : ServerNodeBase
     {
         public override string name => NodeGroupHelper.GetName(Type.GetHashCode());

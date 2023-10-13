@@ -4,7 +4,7 @@ using GraphProcessor;
 
 namespace FlowEditor.Editor
 {
-    [NodeMenuItem((int)FlowNodeType.GiveItems), GameEventNode, System.Serializable]
+    [NodeMenuItem((int)FlowNodeType.GiveItems), FlowNode, System.Serializable]
     public class GiveItemsNode : ServerNodeBase
     {
         public override string name => NodeGroupHelper.GetName(Type.GetHashCode());

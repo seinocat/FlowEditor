@@ -4,7 +4,7 @@ using UnityEngine;
 
 namespace FlowEditor.Editor
 {
-    [NodeMenuItem((int)FlowNodeType.MessageTip), GameEventNode, System.Serializable]
+    [NodeMenuItem((int)FlowNodeType.MessageTip), FlowNode, System.Serializable]
     public class MessageTipNode : ClientNodeBase
     {
         public override string name => NodeGroupHelper.GetName(Type.GetHashCode());
