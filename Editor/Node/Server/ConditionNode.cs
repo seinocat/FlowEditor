@@ -13,13 +13,13 @@ namespace FlowEditor.Editor
         public override FlowNodeType Type => FlowNodeType.Condition;
         
         [Input("In")]
-        public EventNodePort Input;
+        public FlowNodePort Input;
         
         [Output("True")]
-        public EventNodePort Output;
+        public FlowNodePort Output;
         
         [Output("False", false)] 
-        public EventNodePort Output2;
+        public FlowNodePort Output2;
         
         [CustomSetting("条件组"), ListReference(typeof(int), nameof(Conditions))] 
         public List<int> Conditions;

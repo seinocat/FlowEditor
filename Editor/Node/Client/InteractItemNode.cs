@@ -17,10 +17,10 @@ namespace FlowEditor.Editor
         public override FlowNodeType Type => FlowNodeType.InteractItem;
         
         [Input("In")]
-        public EventNodePort Input;
+        public FlowNodePort Input;
         
         [Output("Out")]
-        public EventNodePort Output;
+        public FlowNodePort Output;
 
         [CustomSetting("可交互状态")] 
         public AgentState State = AgentState.Idle;

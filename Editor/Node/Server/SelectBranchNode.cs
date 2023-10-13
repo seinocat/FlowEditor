@@ -15,7 +15,7 @@ namespace FlowEditor.Editor
         public override FlowNodeType Type => FlowNodeType.SelectBranch;
         
         [Input("In")]
-        public EventNodePort Input;
+        public FlowNodePort Input;
         
         [CustomSetting("分支端口", false)] 
         public int PortCount = 2;
@@ -24,7 +24,7 @@ namespace FlowEditor.Editor
         public List<BranchData> BranchDatas = new List<BranchData>();
         
         [Output, SerializeField, HideInInspector]
-        public EventNodePort Branchs;
+        public FlowNodePort Branchs;
         
         [CustomPortBehavior(nameof(Branchs))]
         protected IEnumerable<PortData> OutputPortBehavior(List<SerializableEdge> edges)
@@ -35,7 +35,7 @@ namespace FlowEditor.Editor
                 yield return new PortData
                 {
                     displayName = $"分支{i}",
-                    displayType = typeof(EventNodePort),
+                    displayType = typeof(FlowNodePort),
                     identifier = i.ToString(),
                     acceptMultipleEdges = false,
                 };

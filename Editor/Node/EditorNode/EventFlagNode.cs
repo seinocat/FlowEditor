@@ -16,7 +16,7 @@ namespace FlowEditor.Editor
         public EditorPort Input;
         
         [Output("Out", false)]
-        public EventStartPort Output;
+        public FlowStartPort Output;
 
         [CustomSetting("事件ID(必填)")] 
         public int EventID;

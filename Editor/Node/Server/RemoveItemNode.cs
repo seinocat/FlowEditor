@@ -12,10 +12,10 @@ namespace FlowEditor.Editor
         public override FlowNodeType Type => FlowNodeType.RemoveItem;
         
         [Input("In")]
-        public EventNodePort Input;
+        public FlowNodePort Input;
         
         [Output("Out", false)]
-        public EventNodePort Output;
+        public FlowNodePort Output;
 
         [CustomSetting("道具列表"), ListReference(typeof(ItemData), nameof(ItemList))] 
         public List<ItemData> ItemList;

@@ -11,10 +11,10 @@ namespace FlowEditor.Editor
         public override FlowNodeType Type => FlowNodeType.ComputeGlobalVariable;
         
         [Input("In")]
-        public EventNodePort Input;
+        public FlowNodePort Input;
         
         [Output("Out", false)]
-        public EventNodePort Output;
+        public FlowNodePort Output;
 
         [CustomSetting("全局变量名")] 
         public string GlobalKey;
