@@ -136,7 +136,10 @@ namespace FlowEditor.Editor
             
             this.Collapse = value;
             Cookie.SetPublic(this.CollapseKey, this.Collapse ? 0 : 1);
-            this.m_FolderCollapse.text = this.Collapse ? "▶" : "▼";
+            if (ExistSubFolderOrFile())
+                this.m_FolderCollapse.text = this.Collapse ? "▶" : "▼";
+            else
+                this.m_FolderCollapse.text = "    ";
             this.m_FolderIcon.sprite = this.Collapse ? this.m_Window.GraphView.FolderClose : this.m_Window.GraphView.FolderOpen;
             if (!this.Collapse)
             {
@@ -156,7 +159,10 @@ namespace FlowEditor.Editor
             
             this.m_FolderCollapse = new Label();
             this.m_FolderCollapse.style.fontSize = 8;
-            this.m_FolderCollapse.text = this.Collapse ? "▶" : "▼";
+            if (ExistSubFolderOrFile())
+                this.m_FolderCollapse.text = this.Collapse ? "▶" : "▼";
+            else
+                this.m_FolderCollapse.text = "    ";
             this.m_FolderCollapse.style.marginLeft = 20 * this.m_Indent;
             Add(m_FolderCollapse);
             
@@ -180,6 +186,14 @@ namespace FlowEditor.Editor
             graphName.style.flexGrow = 1;
             Add(graphName);
         }
+        
+        private bool ExistSubFolderOrFile()
+        {
+            var folders = FlowUtils.GetSubFolders(this.m_Data.Path);
+            var graphs = FlowUtils.LoadAllAssets<FlowGraphBase>(this.m_Data.Path, SearchOption.TopDirectoryOnly);
+            return folders.Count > 0 || graphs.Count > 0;
+        }
+
         
         private void DrawGraph()
         {
