@@ -1,5 +1,5 @@
 # FlowEditor
-流程节点编辑器，基于NodeGraph，Inspector依赖于odin插件(需自行购买导入)，仅供学习参考使用
+流程节点编辑器，依赖于[NodeGraphProcessor](https://github.com/wqaetly/NodeGraphProcessor)和[Odin Inspector](https://odininspector.com/)插件(Odin需自行购买)，仅供学习参考使用
 
 这里只提供了Editor部分的代码，因为导出代码和运行时代码各个项目需求都不一样，没有太大参考价值就没有传
 
@@ -9,9 +9,10 @@
 
 ![image](https://github.com/Svily/FlowEditor/blob/master/Image/flow4.png)
 
-事件流程编辑
+**事件流程**
 ![image](https://github.com/Svily/FlowEditor/blob/master/Image/flow01.png)
 
-交互流程编辑
+**交互流程**
 ![image](https://github.com/Svily/FlowEditor/blob/master/Image/flow2.png)
+
 
