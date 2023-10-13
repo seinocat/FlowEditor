@@ -207,7 +207,7 @@ namespace FlowEditor.Editor
         private void DrawSubFolder()
         {
             var curIndex = this.m_FileView.contentContainer.IndexOf(this);
-            var folders = FlowEditorUtils.GetSubFolders(this.m_Data.Path);
+            var folders = FlowUtils.GetSubFolders(this.m_Data.Path);
             curIndex++;
             for (int i = 0; i < folders.Count; i++)
             {
@@ -230,7 +230,7 @@ namespace FlowEditor.Editor
         private void DrawSubGraph()
         {
             var curIndex = this.m_FileView.IndexOf(this) + this.m_SubViews.Count + 1;
-            var graphs = FlowEditorUtils.LoadAllAssets<FlowGraphBase>(this.m_Data.Path, SearchOption.TopDirectoryOnly);
+            var graphs = FlowUtils.LoadAllAssets<FlowGraphBase>(this.m_Data.Path, SearchOption.TopDirectoryOnly);
             graphs.Sort((x, y) => string.Compare(x.name, y.name, StringComparison.Ordinal));
             
             for (int i = 0; i < graphs.Count; i++)
