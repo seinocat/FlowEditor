@@ -6,7 +6,7 @@
 该工程Demo实现了一个用于编辑事件，对话，交互等流程向配置的编辑器。
 
 事件流程编辑
-![image](https://github.com/Svily/FlowEditor/blob/master/Assets/Image/flow01.png)
+![image](https://github.com/Svily/FlowEditor/blob/master/Image/flow01.png)
 
 交互流程编辑
-![image](https://github.com/Svily/FlowEditor/blob/master/Assets/Image/flow2.png)
+![image](https://github.com/Svily/FlowEditor/blob/master/Image/flow2.png)
