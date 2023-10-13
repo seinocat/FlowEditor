@@ -1,4 +1,8 @@
-﻿using UnityEditor;
+﻿using System;
+using System.Collections.Generic;
+using System.IO;
+using System.Linq;
+using FlowEditor.Runtime;
 using UnityEngine;
 using UnityEngine.UIElements;
 
@@ -6,109 +10,271 @@ namespace FlowEditor.Editor
 {
     public class GraphItemView : VisualElement
     {
+        public FlowGraphBase m_Graph;
+        public GraphItemData m_Data;
         private FlowGraphWindow m_Window;
-        private FlowGraphBase m_Graph;
+        private FileListView m_FileView;
 
-        public FlowGraphBase Graph => this.m_Graph;
+        private Label m_FolderCollapse;
+        private Image m_FolderIcon;
+        private List<GraphItemView> m_SubViews;
+        private int m_Indent;
+        private string CollapseKey => $"FlowEvent_Collapse_{m_Data.Path}";
         
-        public GraphItemView(FlowGraphWindow window, FlowGraphBase graph)
+        private DateTime lastClickTime;
+        private float doubleClickThreshold = 0.4f;
+        private Action<GraphItemView, ContextualMenuPopulateEvent> m_MenuPopulateAction;
+
+        public bool Collapse { get; private set; }
+        public bool IsSelected { get; private set; }
+
+        public static GraphItemView CreateFolderView(FileListView fileView, FlowGraphWindow window, int indent, string path)
         {
-            this.m_Window = window;
-            this.m_Graph = graph;
+            GraphItemData data = GraphItemData.CreateDictory(path);
+            GraphItemView view = new GraphItemView(fileView, window, indent, data);
             
+            return view;
+        }
+        
+        public static GraphItemView CreateGraphView(FileListView fileView, FlowGraphWindow window, int indent, FlowGraphBase graph)
+        {
+            GraphItemData data = GraphItemData.CreateGraph(graph);
+            GraphItemView view = new GraphItemView(fileView, window, indent, data, graph);
+            return view;
+        }
+        
+        public GraphItemView(FileListView fileView, FlowGraphWindow window, int indent, GraphItemData data, FlowGraphBase graph = null)
+        {
+            this.m_SubViews = new List<GraphItemView>();
+            this.m_Window = window;
+            this.m_FileView = fileView;
+            this.m_Graph = graph;
+            this.m_Data = data;
+            this.m_Indent = indent;
+            this.Collapse = Cookie.GetPublic(this.CollapseKey, 0) == 0;
+            this.m_MenuPopulateAction = fileView.MenuPopulate;
             this.style.flexDirection = FlexDirection.Row;
             this.style.justifyContent = Justify.FlexStart;
+
+            RegisterCallback<PointerDownEvent>((pointDown) =>
+            {
+                if (pointDown.button == 0)
+                {
+                    this.m_FileView.SetSelected(this);
+                
+                    // 获取当前点击的时间戳
+                    DateTime currentClickTime = DateTime.Now;
+
+                    // 计算时间差
+                    TimeSpan timeSinceLastClick = currentClickTime - lastClickTime;
+
+                    if (timeSinceLastClick.TotalSeconds < doubleClickThreshold)
+                    {
+                        if (this.m_Data.IsFolder)
+                        {
+                            DoCollapse(!this.Collapse);
+                        }
+                        else
+                        {
+                            OpenBtnClick();
+                        }
+
+                        // 重置上一次点击的时间戳
+                        lastClickTime = DateTime.MinValue;
+                    }
+                    else
+                    {
+                        // 更新上一次点击的时间戳
+                        lastClickTime = currentClickTime;
+                    }
+                }
+
+                if (pointDown.button == 1)
+                {
+                    if (!this.IsSelected)
+                    {
+                        this.m_FileView.SetSelected(this);
+                    }
+                }
+            });
             
-            this.DrawView();
+            
+            this.AddManipulator(new ContextualMenuManipulator(BuildContextMenu));
+        }
+
+        public void SetSelect(bool value)
+        {
+            this.IsSelected = value;
+            this.style.backgroundColor = value ? new Color(0.22f, 0.4f, 0.67f) : new Color(0f,0f,0f,0f);
+        }
+        
+        private void BuildContextMenu(ContextualMenuPopulateEvent evt)
+        {
+            m_MenuPopulateAction?.Invoke(this, evt);
         }
 
         public void DrawView()
         {
+            if (m_Data.IsFolder)
+            {
+                DrawFolder();
+                if (!Collapse)
+                {
+                    DrawSubFolder();
+                    DrawSubGraph();
+                }
+            }
+            else
+            {
+                DrawGraph();
+            }
+        }
+
+        public void DoCollapse(bool value)
+        {
+            if (this.Collapse == value) return;
+            
+            this.Collapse = value;
+            Cookie.SetPublic(this.CollapseKey, this.Collapse ? 0 : 1);
+            this.m_FolderCollapse.text = this.Collapse ? "▶" : "▼";
+            this.m_FolderIcon.sprite = this.Collapse ? this.m_Window.GraphView.FolderClose : this.m_Window.GraphView.FolderOpen;
+            if (!this.Collapse)
+            {
+                DrawSubFolder();
+                DrawSubGraph();
+            }
+            else
+            {
+                ClearSubView();
+            }
+        }
+
+        private void DrawFolder()
+        {
+            this.contentContainer.style.alignItems = Align.Center;
+            this.contentContainer.style.justifyContent = Justify.Center;
+            
+            this.m_FolderCollapse = new Label();
+            this.m_FolderCollapse.style.fontSize = 8;
+            this.m_FolderCollapse.text = this.Collapse ? "▶" : "▼";
+            this.m_FolderCollapse.style.marginLeft = 20 * this.m_Indent;
+            Add(m_FolderCollapse);
+            
+            this.m_FolderCollapse.RegisterCallback<PointerDownEvent>((pointDown) =>
+            {
+                if (this.m_Data.IsFolder)
+                {
+                    DoCollapse(!this.Collapse);
+                }
+            });
+            
+            this.m_FolderIcon = new Image();
+            m_FolderIcon.sprite = this.Collapse ? this.m_Window.GraphView.FolderClose : this.m_Window.GraphView.FolderOpen;
+            m_FolderIcon.style.width = 15;
+            m_FolderIcon.style.height = 15;
+            Add(m_FolderIcon);
+
+            Label graphName = new Label();
+            graphName.text = this.m_Data.Name;
+            graphName.style.fontSize = 12;
+            graphName.style.flexGrow = 1;
+            Add(graphName);
+        }
+        
+        private void DrawGraph()
+        {
+            this.contentContainer.style.alignItems = Align.Center;
+            this.contentContainer.style.justifyContent = Justify.Center;
+            
+            Image graphIcon = new Image();
+            graphIcon.sprite = this.m_Window.GraphView.GraphIcon;
+            graphIcon.style.marginLeft = 20 * this.m_Indent;
+            graphIcon.style.width = 15;
+            graphIcon.style.height = 15;
+            Add(graphIcon);
+            
             Label graphName = new Label();
             graphName.text = this.m_Graph.name;
             graphName.style.flexGrow = 1;
+            
             if (this.m_Window.Graph == this.m_Graph)
             {
                 graphName.style.color = Color.cyan;
             }
             Add(graphName);
-            
-            Button openBtn = new Button(OnOpenBtnClick);
-            openBtn.text = "打开";
-            openBtn.style.alignSelf = Align.FlexEnd;
-            Add(openBtn);
-            
-            Button exportBtn = new Button(OnExportBtnClick);
-            exportBtn.text = "导出";
-            exportBtn.style.alignSelf = Align.FlexEnd;
-            Add(exportBtn);
-            
-            Button renameBtn = new Button(OnRenameBtnClick);
-            renameBtn.text = "重命名";
-            renameBtn.style.alignSelf = Align.FlexEnd;
-            Add(renameBtn);
-            
-            Button delBtn = new Button(OnDelClick);
-            delBtn.text = "删除";
-            delBtn.style.alignSelf = Align.FlexEnd;
-            Add(delBtn);
+        }
+        
+        private void DrawSubFolder()
+        {
+            var curIndex = this.m_FileView.contentContainer.IndexOf(this);
+            var folders = FlowEditorUtils.GetSubFolders(this.m_Data.Path);
+            curIndex++;
+            for (int i = 0; i < folders.Count; i++)
+            {
+                var view = CreateFolderView(this.m_FileView, this.m_Window, this.m_Indent + 1, folders[i]);
+                this.m_SubViews.Add(view);
+                this.m_FileView.Insert(curIndex, view);
+                view.DrawView();
+                if (view.m_SubViews.Count > 0)
+                {
+                    curIndex += view.GetSubViewCount() + 1;
+                }
+                else
+                {
+                    curIndex++;
+                }
+                
+            }
         }
 
-        private void OnOpenBtnClick()
+        private void DrawSubGraph()
+        {
+            var curIndex = this.m_FileView.IndexOf(this) + this.m_SubViews.Count + 1;
+            var graphs = FlowEditorUtils.LoadAllAssets<FlowGraphBase>(this.m_Data.Path, SearchOption.TopDirectoryOnly);
+            graphs.Sort((x, y) => string.Compare(x.name, y.name, StringComparison.Ordinal));
+            
+            for (int i = 0; i < graphs.Count; i++)
+            {
+                var view = CreateGraphView(this.m_FileView, this.m_Window, this.m_Indent + 1, graphs[i]);
+                this.m_SubViews.Add(view);
+                this.m_FileView.Insert(curIndex, view);
+                view.DrawView();
+                if (view.m_SubViews.Count > 0)
+                {
+                    curIndex += view.GetSubViewCount() + 1;
+                }
+                else
+                {
+                    curIndex++;
+                }
+            }
+        }
+
+        private void ClearSubView()
+        {
+            for (int i = 0; i < this.m_SubViews.Count; i++)
+            {
+                this.m_SubViews[i].ClearSubView();
+                this.m_FileView.Remove(this.m_SubViews[i]);
+            }
+            this.m_SubViews.Clear();
+        }
+        
+        public int GetSubViewCount()
+        {
+            return m_SubViews.Count + m_SubViews.Sum(view => view.GetSubViewCount());
+        }
+
+        private void OpenBtnClick()
         {
             if (this.m_Window.Graph != this.m_Graph)
             {
-                this.m_Graph.OpenCount++;
-                this.m_Window.GraphView.FileView.SetScrollOffset();
+                this.m_FileView.SetScrollOffset();
+                Cookie.SetPublic(FlowGraphWindow.OPEN_GRAPH, this.m_Graph.name);
                 this.m_Window.InitializeGraph(this.m_Graph);
             }
         }
 
-        private void OnExportBtnClick()
-        {
-            // if (FlowExportUtils.ExportGraph(this.m_Graph))
-            // {
-            //     EditorUtility.DisplayDialog("提示", $"导出{this.m_Graph.name}成功", "确定");
-            // }
-            // else
-            // {
-            //     EditorUtility.DisplayDialog("提示", $"导出{this.m_Graph.name}失败，请根据报错日志修改！", "确定");
-            // }
-        }
-        
-        public void OnRenameBtnClick()
-        {
-            CustomGameEventWindow.OpenWindow("重命名", this.m_Graph.name, (NewName) =>
-            {
-                var oldePath = AssetDatabase.GetAssetPath(this.m_Graph);
-                var path = $"Assets/Editor/FlowGraphs/{NewName}.asset";
-                if (AssetDatabase.LoadAssetAtPath<FlowGraphBase>(path) != null)
-                {
-                    EditorUtility.DisplayDialog("提示", "该配置已存在!", "确定");
-                }
-                else
-                {
-                    AssetDatabase.RenameAsset(oldePath, NewName);
-                    AssetDatabase.Refresh();
-                    this.m_Window.GraphView.FileView.SetDirty();
-                    CustomGameEventWindow.CloseWindow();
-                }
-               
-            });
-        }
-        
-        private void OnDelClick()
-        {
-            if (EditorUtility.DisplayDialog("警告", $"确定删除{this.m_Graph.name}?", "确定", "取消"))
-            {
-                bool isSame = this.m_Graph == this.m_Window.Graph;
-                var path = AssetDatabase.GetAssetPath(this.m_Graph);
-                AssetDatabase.DeleteAsset(path);
-                AssetDatabase.Refresh();
 
-                this.m_Window.InitializeGraph(isSame ? FlowGraphWindow.GraphBases[0] : this.m_Window.Graph);
-                this.m_Window.GraphView.FileView.SetDirty();
-            }
-        }
     }
 }

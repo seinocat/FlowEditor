@@ -1,10 +1,23 @@
 ﻿using FlowEditor.Runtime;
 using GraphProcessor;
+using UnityEngine;
 
 namespace FlowEditor.Editor
 {
     public abstract class EventNodeBase : BaseNode
     {
+        /// <summary>
+        /// 节点顺序
+        /// </summary>
+        [HideInInspector]
+        public int NodeOrder = -1;
+        
+        /// <summary>
+        /// 流程节点
+        /// </summary>
+        [HideInInspector]
+        public FlowType FlowType = FlowType.None;
+        
         /// <summary>
         /// 节点类型
         /// </summary>

@@ -23,9 +23,9 @@ namespace FlowEditor.Editor
             this.scrollable = true;
             this.addItemRequested = OnAddBtnClick;
             this.m_Graph = this.m_Window.Graph;
-            this.SetPosition(new Rect(Cookie.GetPublic(POSX, 0f), Cookie.GetPublic(POSY, 0f), Cookie.GetPublic(WIDTH, 340f), Cookie.GetPublic(HEIGHT, 200f)));
-            this.DrawView();
-            this.RegisterCallback<GeometryChangedEvent>(OnGeometryChanged);
+            SetPosition(new Rect(Cookie.GetPublic(POSX, 0f), Cookie.GetPublic(POSY, 0f), Cookie.GetPublic(WIDTH, 340f), Cookie.GetPublic(HEIGHT, 200f)));
+            DrawView();
+            RegisterCallback<GeometryChangedEvent>(OnGeometryChanged);
         }
         
         public void DrawView()
@@ -41,62 +41,56 @@ namespace FlowEditor.Editor
             Label graphName = new Label();
             graphName.text = this.m_Graph.name;
             graphName.style.alignSelf = Align.Center;
-            this.Add(graphName);
+            Add(graphName);
 
             Button exportBtn = new Button(ExportGraph);
             exportBtn.text = "导出当前";
             exportBtn.style.width = length;
             exportBtn.style.alignSelf = Align.Center;
-            this.Add(exportBtn);
+            Add(exportBtn);
             
             Button exportAllBtn = new Button(ExportAll);
             exportAllBtn.text = "导出全部";
             exportAllBtn.style.width = length;
             exportAllBtn.style.alignSelf = Align.Center;
-            this.Add(exportAllBtn);
+            Add(exportAllBtn);
             
             Button exportServerBtn = new Button(ExportServer);
             exportServerBtn.text = "导出服务器配置";
             exportServerBtn.style.width = length;
             exportServerBtn.style.alignSelf = Align.Center;
-            this.Add(exportServerBtn);
+            Add(exportServerBtn);
             
             Button oneKeyExportBtn = new Button(OneKeyExport);
             oneKeyExportBtn.text = "一键导出所有配置";
             oneKeyExportBtn.style.width = length;
             oneKeyExportBtn.style.alignSelf = Align.Center;
-            this.Add(oneKeyExportBtn);
+            Add(oneKeyExportBtn);
             
             Button jsonPathBtn = new Button(OpenJsonConfigPath);
             jsonPathBtn.text = "打开配置目录";
             jsonPathBtn.style.width = length;
             jsonPathBtn.style.alignSelf = Align.Center;
-            this.Add(jsonPathBtn);
-            
-            Button renameBtn = new Button(OnRenameBtnClick);
-            renameBtn.text = "重命名";
-            renameBtn.style.width = length;
-            renameBtn.style.alignSelf = Align.Center;
-            this.Add(renameBtn);
+            Add(jsonPathBtn);
             
             Button delBtn = new Button(OnDelClick);
             delBtn.text = "删除";
             delBtn.style.width = length;
             delBtn.style.alignSelf = Align.Center;
-            this.Add(delBtn);
+            Add(delBtn);
         }
         
         public void OnAddBtnClick(Blackboard blackboard)
         {
-            CustomGameEventWindow.OpenWindow("创建新流程", "New FlowGraph", (CreateName) =>
+            CustomGameEventWindow.OpenWindow("创建新事件", "New Flow", (CreateName) =>
             {
                 var graph = ScriptableObject.CreateInstance<FlowGraphBase>();
                 var path = $"Assets/Editor/FlowGraphs/{CreateName}.asset";
-                if (AssetDatabase.LoadAssetAtPath<FlowGraphBase>(path) == null)
+                if (!this.m_GraphView.FileView.IsGraphExist(CreateName))
                 {
                     AssetDatabase.CreateAsset(graph, path);
                     AssetDatabase.Refresh();
-                    this.m_GraphView.FileView.RefreshFiles();
+                    this.m_GraphView.FileView.Repaint();
                     CustomGameEventWindow.CloseWindow();
                 }
                 else
@@ -158,28 +152,8 @@ namespace FlowEditor.Editor
 
         public void OpenJsonConfigPath()
         {
-            string folderPath = "Assets/Config/Flow/";
+            string folderPath = "Assets/Config/Flows/";
             EditorUtility.RevealInFinder(folderPath);
-        }
-        
-        public void OnRenameBtnClick()
-        {
-            CustomGameEventWindow.OpenWindow("重命名", this.m_Graph.name, (NewName) =>
-            {
-                var oldePath = AssetDatabase.GetAssetPath(this.m_Graph);
-                var path = $"Assets/Editor/FlowGraphs/{NewName}.asset";
-                if (AssetDatabase.LoadAssetAtPath<FlowGraphBase>(path) != null)
-                {
-                    EditorUtility.DisplayDialog("提示", "该配置已存在!", "确定");
-                }
-                else
-                {
-                    AssetDatabase.RenameAsset(oldePath, NewName);
-                    AssetDatabase.Refresh();
-                    this.m_Window.GraphView.FileView.SetDirty();
-                    CustomGameEventWindow.CloseWindow();
-                }
-            });
         }
         
         private void OnDelClick()
@@ -192,13 +166,13 @@ namespace FlowEditor.Editor
                 AssetDatabase.Refresh();
 
                 this.m_Window.InitializeGraph(isSame ? FlowGraphWindow.GraphBases[0] : this.m_Window.Graph);
-                this.m_Window.GraphView.FileView.SetDirty();
+                this.m_Window.GraphView.FileView.Repaint();
             }
         }
         
         private void OnGeometryChanged(GeometryChangedEvent evt)
         {
-            var rect = this.GetPosition();
+            var rect = GetPosition();
             Cookie.SetPublic(WIDTH, rect.width);
             Cookie.SetPublic(HEIGHT, rect.height);
             Cookie.SetPublic(POSX, rect.position.x);

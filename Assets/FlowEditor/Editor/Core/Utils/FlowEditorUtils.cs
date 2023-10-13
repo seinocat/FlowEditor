@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.IO;
+using System.Linq;
 using GraphProcessor;
 using UnityEditor;
 
@@ -14,21 +15,27 @@ namespace FlowEditor.Editor
         /// <param name="path"></param>
         /// <typeparam name="T"></typeparam>
         /// <returns></returns>
-        public static List<T> LoadAllAssets<T>(string path) where T : UnityEngine.Object
+        /// <summary>
+        /// 获取路径下所有指定类型的资源
+        /// </summary>
+        /// <param name="path"></param>
+        /// <param name="option"></param>
+        /// <typeparam name="T"></typeparam>
+        /// <returns></returns>
+        public static List<T> LoadAllAssets<T>(string path, SearchOption option = SearchOption.AllDirectories) where T : UnityEngine.Object
         {
             List<T> list = new List<T>();
             if (Directory.Exists(path))
             {
                 DirectoryInfo dir = new DirectoryInfo(path);
-                
-                FileInfo[] files = dir.GetFiles("*", SearchOption.AllDirectories);
+                FileInfo[] files = dir.GetFiles("*", option);
 
                 foreach (var file in files)
                 {
                     if (file.Name.EndsWith(".meta")) continue;
 
                     string assetName = file.FullName;
-                    string assetPath = assetName.Substring(assetName.IndexOf("Assets", StringComparison.Ordinal));
+                    string assetPath = assetName[assetName.IndexOf("Assets", StringComparison.Ordinal)..];
                     T asset = AssetDatabase.LoadAssetAtPath<T>(assetPath);
                     if (asset)
                     {
@@ -38,23 +45,25 @@ namespace FlowEditor.Editor
             }
             
             return list;
-        } 
-        
-        public static string GetSortTypeName(this SortType type)
-        {
-            switch (type)
-            {
-                case SortType.Time:
-                    return "按创建时间";
-                case SortType.Name:
-                    return "按名字";
-                case SortType.Count:
-                    return "按使用频率";
-                default:
-                    return "按名字";
-            }
         }
 
+        public static List<string> GetSubFolders(string path, bool onlyName = false)
+        {
+
+            var folders = AssetDatabase.GetSubFolders(path).ToList();
+
+            if (onlyName)
+            {
+                List<string> subFloders = new List<string>();
+                for (int i = 0; i < folders.Count; i++)
+                {
+                    subFloders.Add(Path.GetFileName(folders[i]));
+                }
+                return subFloders;
+            }
+
+            return folders;
+        }
 
         public static List<BaseNode> GetOutputNodeList(this BaseNode node)
         {

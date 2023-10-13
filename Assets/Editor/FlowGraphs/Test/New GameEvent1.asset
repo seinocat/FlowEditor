@@ -182,8 +182,8 @@ MonoBehaviour:
   serializedParameterList: []
   stickyNotes: []
   nodeInspectorReference: {fileID: 0}
-  position: {x: 236, y: 455, z: 0}
-  scale: {x: 0.49717674, y: 0.49717674, z: 1}
+  position: {x: 268, y: 240, z: 0}
+  scale: {x: 0.57175326, y: 0.57175326, z: 1}
   Timestamp: 1691634545
   OpenCount: 2
   m_Window: {fileID: 0}
@@ -205,6 +205,8 @@ MonoBehaviour:
         expanded: 0
         debug: 0
         nodeLock: 0
+        NodeOrder: -1
+        FlowType: 0
     - rid: 7787330914979676179
       type: {class: InteractFlagNode, ns: FlowEditor.Editor, asm: Assembly-CSharp-Editor}
       data:
@@ -220,6 +222,8 @@ MonoBehaviour:
         expanded: 0
         debug: 0
         nodeLock: 0
+        NodeOrder: -1
+        FlowType: 0
         desc: 
     - rid: 7787330914979676180
       type: {class: InteractItemNode, ns: FlowEditor.Editor, asm: Assembly-CSharp-Editor}
@@ -236,6 +240,8 @@ MonoBehaviour:
         expanded: 0
         debug: 0
         nodeLock: 0
+        NodeOrder: -1
+        FlowType: 0
         State: 1
         Sprite: {fileID: 0}
         Text: "\u9009\u98791"
@@ -257,6 +263,8 @@ MonoBehaviour:
         expanded: 0
         debug: 0
         nodeLock: 0
+        NodeOrder: -1
+        FlowType: 0
         State: 1
         Sprite: {fileID: 0}
         Text: "\u9009\u4FEE2"
@@ -278,6 +286,8 @@ MonoBehaviour:
         expanded: 0
         debug: 0
         nodeLock: 0
+        NodeOrder: -1
+        FlowType: 0
         State: 1
         Sprite: {fileID: 0}
         Text: "\u9009\u98793"
@@ -299,6 +309,8 @@ MonoBehaviour:
         expanded: 0
         debug: 0
         nodeLock: 0
+        NodeOrder: -1
+        FlowType: 0
         State: 1
         Sprite: {fileID: 0}
         Text: 
@@ -320,6 +332,8 @@ MonoBehaviour:
         expanded: 0
         debug: 0
         nodeLock: 0
+        NodeOrder: -1
+        FlowType: 0
         State: 1
         Sprite: {fileID: 0}
         Text: 
@@ -341,6 +355,8 @@ MonoBehaviour:
         expanded: 0
         debug: 0
         nodeLock: 0
+        NodeOrder: -1
+        FlowType: 0
         State: 1
         Sprite: {fileID: 0}
         Text: 
@@ -362,6 +378,8 @@ MonoBehaviour:
         expanded: 0
         debug: 0
         nodeLock: 0
+        NodeOrder: -1
+        FlowType: 0
         State: 1
         Sprite: {fileID: 0}
         Text: 
@@ -383,6 +401,8 @@ MonoBehaviour:
         expanded: 0
         debug: 0
         nodeLock: 0
+        NodeOrder: -1
+        FlowType: 0
         State: 1
         Sprite: {fileID: 0}
         Text: 
@@ -404,6 +424,8 @@ MonoBehaviour:
         expanded: 0
         debug: 0
         nodeLock: 0
+        NodeOrder: -1
+        FlowType: 0
         UIType: 0
         UIName: 
         UIParams: 
@@ -423,6 +445,8 @@ MonoBehaviour:
         expanded: 0
         debug: 0
         nodeLock: 0
+        NodeOrder: -1
+        FlowType: 0
     - rid: 7787330914979676190
       type: {class: ExecuteEventNode, ns: FlowEditor.Editor, asm: Assembly-CSharp-Editor}
       data:
@@ -438,6 +462,8 @@ MonoBehaviour:
         expanded: 0
         debug: 0
         nodeLock: 0
+        NodeOrder: -1
+        FlowType: 0
         EventID: 0
     - rid: 7787330914979676191
       type: {class: EndNode, ns: FlowEditor.Editor, asm: Assembly-CSharp-Editor}
@@ -454,6 +480,8 @@ MonoBehaviour:
         expanded: 0
         debug: 0
         nodeLock: 0
+        NodeOrder: -1
+        FlowType: 0
     - rid: 7787330914979676192
       type: {class: PlayNpcActionNode, ns: FlowEditor.Editor, asm: Assembly-CSharp-Editor}
       data:
@@ -469,6 +497,8 @@ MonoBehaviour:
         expanded: 0
         debug: 0
         nodeLock: 0
+        NodeOrder: -1
+        FlowType: 0
         ActionName: 
     - rid: 7787330914979676193
       type: {class: MessageTipNode, ns: FlowEditor.Editor, asm: Assembly-CSharp-Editor}
@@ -485,4 +515,6 @@ MonoBehaviour:
         expanded: 0
         debug: 0
         nodeLock: 0
+        NodeOrder: -1
+        FlowType: 0
         Content: "\u65E0\u4E8B\u53D1\u751F"

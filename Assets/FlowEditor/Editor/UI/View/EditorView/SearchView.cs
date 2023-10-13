@@ -6,12 +6,13 @@ namespace FlowEditor.Editor
     {
         private FlowGraphView m_View;
         private TextField m_TextField;
-        public string m_InputText = string.Empty;
+        public string m_InputText;
 
         public SearchView(FlowGraphView view)
         {
             this.m_View = view;
-            this.DrawView();
+            this.m_InputText = FlowStaticData.SearchKey;
+            DrawView();
         }
 
         public void DrawView()
@@ -24,14 +25,15 @@ namespace FlowEditor.Editor
             this.m_TextField.maxLength = 50;
             this.m_TextField.value = this.m_InputText;
             
-            this.Add(this.m_TextField);
+            Add(this.m_TextField);
         }
         
         private void OnTextChanged(ChangeEvent<string> evt)
         {
             this.m_InputText = evt.newValue;
             this.m_TextField.value = this.m_InputText;
-            this.m_View.FileView.RefreshFiles();
+            FlowStaticData.SearchKey = this.m_InputText;
+            this.m_View.FileView.Repaint();
         }
     }
 }

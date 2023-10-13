@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using FlowEditor.Runtime;
 using GraphProcessor;
 using UnityEditor;
 using UnityEditor.Callbacks;
@@ -14,16 +15,36 @@ namespace FlowEditor.Editor
         public FlowGraphView GraphView => this.graphView as FlowGraphView;
         public static List<FlowGraphBase> GraphBases => FlowEditorUtils.LoadAllAssets<FlowGraphBase>(ResourcePath);
         
-        [MenuItem("Tools/FlowEditor/Editor")]
+        public static string OPEN_GRAPH = "Flow_CurOpen";
+        
+        public void SetGraph(BaseGraph baseGraph)
+        {
+            this.graph = baseGraph;
+        }
+        
+        [MenuItem("Tools/FlowEditor %#z")]
         public static void OpenWindow()
         {
             var window = GetWindow<FlowGraphWindow>();
             if (GraphBases.Count == 0)
             {
-                EditorUtility.DisplayDialog("提示", "当前没有配置!请通过右键Create/FlowGraph！", "确定");
+                EditorUtility.DisplayDialog("提示", "当前没有事件配置!请通过右键Create/Flow创建！", "确定");
                 return;
             }
-            window.InitializeGraph(GraphBases[0]);
+
+            var open = Cookie.GetPublic(OPEN_GRAPH, string.Empty);
+            FlowGraphBase graph;
+            if (string.IsNullOrEmpty(open))
+            {
+                graph = GraphBases[0];
+            }
+            else
+            {
+                graph = GraphBases.Find(x => x.name == open);
+                if (graph == null) graph = GraphBases[0];
+            }
+            
+            window.SetGraph(graph);
             window.Show();
         }
         
@@ -34,24 +55,25 @@ namespace FlowEditor.Editor
             if (graph)
             {
                 var window = GetWindow<FlowGraphWindow>();
+                Cookie.SetPublic(OPEN_GRAPH, graph.name);
                 window.InitializeGraph(graph);
                 window.Show();
-                graph.OpenCount++;
             }
             return graph;
         }
         
-        [MenuItem("Assets/Create/FlowGraph", false, 10)]
+        [MenuItem("Assets/Create/Flow", false, 10)]
         public static void CreateGraphAsset()
         {
             var graph = CreateInstance<FlowGraphBase>();
-            var path = $"{ResourcePath}/New FlowGraph{GraphBases.Count + 1}.asset";
+            var path = $"{ResourcePath}/New Flow{GraphBases.Count + 1}.asset";
             AssetDatabase.CreateAsset(graph, path);
             AssetDatabase.Refresh();
         }
         
         protected override void InitializeWindow(BaseGraph baseGraph)
         {
+            NodeGroupHelper.LoadConfig();
             if (baseGraph != null && (baseGraph.nodes == null || baseGraph.nodes.Count == 0))
             {
                 var rootNode = BaseNode.CreateFromType(typeof(RootNode), new Vector2(656.5f, 390.4f));
@@ -65,9 +87,6 @@ namespace FlowEditor.Editor
             }
             rootView.Add(graphView);
         }
-        
-        
-        
     }
     
 

@@ -5,6 +5,16 @@ using UnityEngine;
 namespace FlowEditor.Runtime
 {
     [Serializable]
+    public enum FlowType
+    {
+        None,
+        [InspectorName("交互流程")]
+        Interact,
+        [InspectorName("事件流程")]
+        Event
+    }
+    
+    [Serializable]
     public enum ComputeType
     {
         [InspectorName("加")]
