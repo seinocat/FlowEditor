@@ -14,7 +14,7 @@ namespace FlowEditor.Editor
         [LabelText("服务器节点"), TableList(ShowIndexLabels = true, IsReadOnly = true)]
         public List<EditorNetNodeTypeData> EnumNetDatas;
         
-        [MenuItem("Tools/FlowEditor/NodeTypeEditor")]
+        [MenuItem("Tools/FlowEditor/NodeTypeEditor %#x")]
         public static void Open()
         {
             var window = GetWindow<NodeTypeEditorWindow>();

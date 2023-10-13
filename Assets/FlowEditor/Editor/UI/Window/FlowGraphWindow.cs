@@ -22,7 +22,7 @@ namespace FlowEditor.Editor
             this.graph = baseGraph;
         }
         
-        [MenuItem("Tools/FlowEditor %#z")]
+        [MenuItem("Tools/FlowEditor/Editor %#z")]
         public static void OpenWindow()
         {
             var window = GetWindow<FlowGraphWindow>();
