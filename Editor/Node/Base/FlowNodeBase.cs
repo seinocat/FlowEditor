@@ -4,7 +4,7 @@ using UnityEngine;
 
 namespace FlowEditor.Editor
 {
-    public abstract class EventNodeBase : BaseNode
+    public abstract class FlowNodeBase : BaseNode
     {
         /// <summary>
         /// 节点顺序
@@ -32,12 +32,7 @@ namespace FlowEditor.Editor
         /// 是否需要上传参数
         /// </summary>
         public virtual bool TansferParameter { get; }
-        
-        /// <summary>
-        /// 不需要向服务器
-        /// </summary>
-        // public virtual bool TansferParameter { get; }
-        
+
 
         public virtual void UpdateForExport(){}
 
