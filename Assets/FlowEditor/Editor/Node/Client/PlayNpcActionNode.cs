@@ -3,10 +3,10 @@ using GraphProcessor;
 
 namespace FlowEditor.Editor
 {
-    [NodeMenuItem("实体/动作"), GameEventNode, System.Serializable]
+    [NodeMenuItem((int)FlowNodeType.PlayNpcAction), GameEventNode, System.Serializable]
     public class PlayNpcActionNode : ClientNodeBase
     {
-        public override string name => "动作";
+        public override string name => NodeGroupHelper.GetName(Type.GetHashCode());
         
         public override FlowNodeType Type => FlowNodeType.PlayNpcAction;
         

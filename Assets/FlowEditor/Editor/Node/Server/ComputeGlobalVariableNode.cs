@@ -3,10 +3,10 @@ using GraphProcessor;
 
 namespace FlowEditor.Editor
 {
-    [NodeMenuItem("变量/运算"), GameEventNode, System.Serializable]
+    [NodeMenuItem((int)FlowNodeType.ComputeGlobalVariable), GameEventNode, System.Serializable]
     public class ComputeGlobalVariableNode : ServerNodeBase
     {
-        public override string name => "变量运算";
+        public override string name => NodeGroupHelper.GetName(Type.GetHashCode());
         
         public override FlowNodeType Type => FlowNodeType.ComputeGlobalVariable;
         

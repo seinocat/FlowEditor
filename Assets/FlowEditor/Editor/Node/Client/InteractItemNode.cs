@@ -7,12 +7,12 @@ using UnityEngine;
 namespace FlowEditor.Editor
 {
 
-    [NodeMenuItem("交互/交互选项"), GameEventNode, Serializable]
+    [NodeMenuItem((int)FlowNodeType.InteractItem), GameEventNode, Serializable]
     public class InteractItemNode : InteractNodeBase
     {
         public override Color color => new Color(0.05f, 0.7f, 0.15f);
 
-        public override string name => "交互选项";
+        public override string name =>NodeGroupHelper.GetName(Type.GetHashCode());
 
         public override FlowNodeType Type => FlowNodeType.InteractItem;
         

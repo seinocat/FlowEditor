@@ -4,10 +4,10 @@ using UnityEngine;
 
 namespace FlowEditor.Editor
 {
-    [NodeMenuItem("交互/消息提示"), GameEventNode, System.Serializable]
+    [NodeMenuItem((int)FlowNodeType.MessageTip), GameEventNode, System.Serializable]
     public class MessageTipNode : ClientNodeBase
     {
-        public override string name => "消息提示";
+        public override string name => NodeGroupHelper.GetName(Type.GetHashCode());
         
         public override FlowNodeType Type => FlowNodeType.MessageTip;
         

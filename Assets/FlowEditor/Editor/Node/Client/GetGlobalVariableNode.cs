@@ -3,10 +3,10 @@ using GraphProcessor;
 
 namespace FlowEditor.Editor
 {
-    [NodeMenuItem("变量/获取"), GameEventNode, System.Serializable]
+    [NodeMenuItem((int)FlowNodeType.GetGlobalVariable), GameEventNode, System.Serializable]
     public class GetGlobalVariableNode : ClientNodeBase
     {
-        public override string name => "获取全局变量";
+        public override string name => NodeGroupHelper.GetName(Type.GetHashCode());
 
         public override FlowNodeType Type => FlowNodeType.GetGlobalVariable;
         

@@ -5,10 +5,10 @@ using UnityEngine;
 
 namespace FlowEditor.Editor
 {
-    [NodeMenuItem("逻辑/执行事件"), GameEventNode, Serializable]
+    [NodeMenuItem((int)FlowNodeType.ExecuteEvent), GameEventNode, Serializable]
     public class ExecuteEventNode : ClientNodeBase
     {
-        public override string name => "执行事件";
+        public override string name => NodeGroupHelper.GetName(Type.GetHashCode());
 
         public override FlowNodeType Type => FlowNodeType.ExecuteEvent;
         

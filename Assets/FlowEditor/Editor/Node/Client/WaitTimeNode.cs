@@ -3,10 +3,10 @@ using GraphProcessor;
 
 namespace FlowEditor.Editor
 {
-    [NodeMenuItem("逻辑/等待"), GameEventNode, System.Serializable]
+    [NodeMenuItem((int)FlowNodeType.WaitTime), GameEventNode, System.Serializable]
     public class WaitTimeNode : ClientNodeBase
     {
-        public override string name => "等待";
+        public override string name => NodeGroupHelper.GetName(Type.GetHashCode());
         
         public override FlowNodeType Type => FlowNodeType.WaitTime;
         

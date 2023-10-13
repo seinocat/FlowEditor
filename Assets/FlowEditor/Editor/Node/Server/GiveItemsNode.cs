@@ -4,10 +4,10 @@ using GraphProcessor;
 
 namespace FlowEditor.Editor
 {
-    [NodeMenuItem("道具/发放奖励(指定ID和数量)"), GameEventNode, System.Serializable]
+    [NodeMenuItem((int)FlowNodeType.GiveItems), GameEventNode, System.Serializable]
     public class GiveItemsNode : ServerNodeBase
     {
-        public override string name => "发放奖励";
+        public override string name => NodeGroupHelper.GetName(Type.GetHashCode());
         
         public override FlowNodeType Type => FlowNodeType.GiveItems;
         

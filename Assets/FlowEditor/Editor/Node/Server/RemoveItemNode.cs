@@ -4,10 +4,10 @@ using GraphProcessor;
 
 namespace FlowEditor.Editor
 {
-    [NodeMenuItem("道具/删除道具"), GameEventNode, System.Serializable]
+    [NodeMenuItem((int)FlowNodeType.RemoveItem), GameEventNode, System.Serializable]
     public class RemoveItemNode : ServerNodeBase
     {
-        public override string name => "删除道具";
+        public override string name => NodeGroupHelper.GetName(Type.GetHashCode());
         
         public override FlowNodeType Type => FlowNodeType.RemoveItem;
         

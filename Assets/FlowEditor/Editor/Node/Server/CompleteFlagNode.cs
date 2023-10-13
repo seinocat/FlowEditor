@@ -4,10 +4,10 @@ using UnityEngine;
 
 namespace FlowEditor.Editor
 {
-    [NodeMenuItem("逻辑/完成标志"), GameEventNode, System.Serializable]
+    [NodeMenuItem((int)FlowNodeType.CompleteFlag), GameEventNode, System.Serializable]
     public class CompleteFlagNode : ServerNodeBase
     {
-        public override string name => "事件完成";
+        public override string name => NodeGroupHelper.GetName(Type.GetHashCode());
         
         public override FlowNodeType Type => FlowNodeType.CompleteFlag;
         

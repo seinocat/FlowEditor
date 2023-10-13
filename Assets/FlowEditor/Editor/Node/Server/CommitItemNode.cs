@@ -3,10 +3,10 @@ using GraphProcessor;
 
 namespace FlowEditor.Editor
 {
-    [NodeMenuItem("道具/提交道具"), GameEventNode, System.Serializable]
+    [NodeMenuItem((int)FlowNodeType.CommitItem), GameEventNode, System.Serializable]
     public class CommitItemNode : ServerNodeBase
     {
-        public override string name => "提交道具";
+        public override string name => NodeGroupHelper.GetName(Type.GetHashCode());
         
         public override FlowNodeType Type => FlowNodeType.CommitItem;
 

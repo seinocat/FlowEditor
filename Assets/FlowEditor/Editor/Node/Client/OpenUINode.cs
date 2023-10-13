@@ -3,10 +3,10 @@ using GraphProcessor;
 
 namespace FlowEditor.Editor
 {
-    [NodeMenuItem("交互/UI"), GameEventNode, System.Serializable]
+    [NodeMenuItem((int)FlowNodeType.OpenUI), GameEventNode, System.Serializable]
     public class OpenUINode : ClientNodeBase
     {
-        public override string name => "打开UI";
+        public override string name => NodeGroupHelper.GetName(Type.GetHashCode());
         
         public override FlowNodeType Type => FlowNodeType.OpenUI;
         

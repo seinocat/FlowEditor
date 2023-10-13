@@ -7,10 +7,10 @@ using UnityEngine;
 
 namespace FlowEditor.Editor
 {
-    [NodeMenuItem("逻辑/选择分支"), GameEventNode, System.Serializable]
+    [NodeMenuItem((int)FlowNodeType.SelectBranch), GameEventNode, System.Serializable]
     public class SelectBranchNode : ServerNodeBase
     {
-        public override string name => "选择分支";
+        public override string name => NodeGroupHelper.GetName(Type.GetHashCode());
         
         public override FlowNodeType Type => FlowNodeType.SelectBranch;
         

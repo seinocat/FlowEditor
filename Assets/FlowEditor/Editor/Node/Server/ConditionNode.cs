@@ -5,10 +5,10 @@ using UnityEngine;
 
 namespace FlowEditor.Editor
 {
-    [NodeMenuItem("逻辑/条件"), GameEventNode, System.Serializable]
+    [NodeMenuItem((int)FlowNodeType.Condition), GameEventNode, System.Serializable]
     public class ConditionNode : ServerNodeBase
     {
-        public override string name => "条件";
+        public override string name => NodeGroupHelper.GetName(Type.GetHashCode());
         
         public override FlowNodeType Type => FlowNodeType.Condition;
         

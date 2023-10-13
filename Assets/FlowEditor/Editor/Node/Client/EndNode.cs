@@ -6,12 +6,12 @@ using UnityEngine;
 namespace FlowEditor.Editor
 {
 
-    [NodeMenuItem("逻辑/结束"), GameEventNode, Serializable]
+    [NodeMenuItem((int)FlowNodeType.End), GameEventNode, Serializable]
     public class EndNode : ClientNodeBase
     {
         public override Color color => new Color(1f, 0.42f, 0f);
 
-        public override string name => "结束";
+        public override string name => NodeGroupHelper.GetName(Type.GetHashCode());
 
         public override FlowNodeType Type => FlowNodeType.End;
         
