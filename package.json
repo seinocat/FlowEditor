@@ -3,6 +3,6 @@
   "displayName": "FlowEditor",
   "description": "Flow Editor",
   "url" : "https://github.com/Svily/FlowEditor.git",
-  "version": "0.0.1",
+  "version": "0.0.3",
   "unity": "2022.3"
 }
