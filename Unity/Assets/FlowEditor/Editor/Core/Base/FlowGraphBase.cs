@@ -19,8 +19,8 @@ namespace FlowEditor.Editor
         {
             foreach (var node in nodes)
             {
-                (node as EventNodeBase).NodeOrder = -1;
-                (node as EventNodeBase).FlowType = FlowType.None;
+                (node as FlowNodeBase).NodeOrder = -1;
+                (node as FlowNodeBase).FlowType = FlowType.None;
             }
             
             foreach (var node in nodes)
@@ -47,7 +47,7 @@ namespace FlowEditor.Editor
                 {
                     foreach (var output in node.GetOutputNodeList())
                     {
-                        var outputNode = output as EventNodeBase;
+                        var outputNode = output as FlowNodeBase;
                         if (outputNode is not InteractItemNode)
                         {
                             int order = 1;
@@ -65,11 +65,11 @@ namespace FlowEditor.Editor
             return true;
         }
         
-        private bool ComputeNodeOrder(EventNodeBase nodeBase, ref int order, FlowType type)
+        private bool ComputeNodeOrder(FlowNodeBase nodeBase, ref int order, FlowType type)
         {
             foreach (var output in nodeBase.GetOutputNodeList())
             {
-                var outputNode = output as EventNodeBase;
+                var outputNode = output as FlowNodeBase;
                 outputNode.NodeOrder = ++order;
                 if (outputNode.FlowType != FlowType.None && outputNode.FlowType != type)
                 {

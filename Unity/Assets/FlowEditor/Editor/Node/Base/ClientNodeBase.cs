@@ -1,6 +1,6 @@
 ﻿namespace FlowEditor.Editor
 {
-    public class ClientNodeBase : EventNodeBase
+    public class ClientNodeBase : FlowNodeBase
     {
         public override bool ServerNode => false;
     }

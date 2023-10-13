@@ -2,7 +2,7 @@
 
 namespace FlowEditor.Editor
 {
-    public class EditorNodeBase : EventNodeBase
+    public class EditorNodeBase : FlowNodeBase
     {
         public override bool ServerNode => false;
         
