@@ -7,14 +7,8 @@ using UnityEditor;
 
 namespace FlowEditor.Editor
 {
-    public static class FlowEditorUtils
+    public static class FlowUtils
     {
-        /// <summary>
-        /// 获取路径下所有指定类型的资源
-        /// </summary>
-        /// <param name="path"></param>
-        /// <typeparam name="T"></typeparam>
-        /// <returns></returns>
         /// <summary>
         /// 获取路径下所有指定类型的资源
         /// </summary>

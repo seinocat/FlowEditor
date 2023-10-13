@@ -13,7 +13,7 @@ namespace FlowEditor.Editor
         
         public FlowGraphBase Graph => this.graph as FlowGraphBase;
         public FlowGraphView GraphView => this.graphView as FlowGraphView;
-        public static List<FlowGraphBase> GraphBases => FlowEditorUtils.LoadAllAssets<FlowGraphBase>(ResourcePath);
+        public static List<FlowGraphBase> GraphBases => FlowUtils.LoadAllAssets<FlowGraphBase>(ResourcePath);
         
         public static string OPEN_GRAPH = "Flow_CurOpen";
         

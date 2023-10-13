@@ -192,7 +192,7 @@ namespace FlowEditor.Editor
         
         private void DrawView()
         {
-            this.m_GraphsList = FlowEditorUtils.LoadAllAssets<FlowGraphBase>(FlowGraphWindow.ResourcePath);
+            this.m_GraphsList = FlowUtils.LoadAllAssets<FlowGraphBase>(FlowGraphWindow.ResourcePath);
             this.contentContainer.Clear();
             ExportData.Clear();
             ClearSelected();
@@ -240,7 +240,7 @@ namespace FlowEditor.Editor
         
         private void DrawHierarchy()
         {
-            var folders = FlowEditorUtils.GetSubFolders(FlowGraphWindow.ResourcePath);
+            var folders = FlowUtils.GetSubFolders(FlowGraphWindow.ResourcePath);
             for (int i = 0; i < folders.Count; i++)
             {
                 var view = GraphItemView.CreateFolderView(this, this.m_Window, 0, folders[i]);
@@ -248,7 +248,7 @@ namespace FlowEditor.Editor
                 view.DrawView();
             }
             
-            var graphBases = FlowEditorUtils.LoadAllAssets<FlowGraphBase>(FlowGraphWindow.ResourcePath, SearchOption.TopDirectoryOnly);
+            var graphBases = FlowUtils.LoadAllAssets<FlowGraphBase>(FlowGraphWindow.ResourcePath, SearchOption.TopDirectoryOnly);
             for (int i = 0; i < graphBases.Count; i++)
             {
                 var view = GraphItemView.CreateGraphView(this, this.m_Window, 0, graphBases[i]);
