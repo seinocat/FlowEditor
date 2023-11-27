@@ -5,7 +5,8 @@
         "Flow.Runtime",
         "com.alelievr.NodeGraphProcessor.Runtime",
         "com.alelievr.NodeGraphProcessor.Editor",
-        "LitJson"
+        "LitJson",
+        ""
     ],
     "includePlatforms": [
         "Editor"

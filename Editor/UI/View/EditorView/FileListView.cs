@@ -438,6 +438,11 @@ namespace FlowEditor.Editor
                     {
                         AddFolder(view, true);
                     });
+                    
+                    evt.menu.AppendAction("复制名称", action =>
+                    {
+                        CopyTextToClipboard(view);
+                    });
 
                     evt.menu.AppendAction("重命名", action=>
                     {
@@ -460,6 +465,11 @@ namespace FlowEditor.Editor
                     evt.menu.AppendAction("导出", action =>
                     {
                         Export(view);
+                    });
+                    
+                    evt.menu.AppendAction("复制名称", action =>
+                    {
+                        CopyTextToClipboard(view);
                     });
                 
                     evt.menu.AppendAction("重命名", action =>
@@ -532,6 +542,18 @@ namespace FlowEditor.Editor
             {
                 Process.Start("explorer.exe", "/select," + path);
             }
+        }
+        
+        // private void ShowConfigPath(GraphItemView view)
+        // {
+        //     string path = Application.dataPath + $"/{view.m_Data.Name}.json";
+        //     path = path.Replace("/", "\\");
+        //     Process.Start("explorer.exe", "/select," + path);
+        // }
+        
+        private void CopyTextToClipboard(GraphItemView view)
+        {
+            GUIUtility.systemCopyBuffer = view.m_Data.Name;
         }
         
         private void AddEvent(GraphItemView view)
