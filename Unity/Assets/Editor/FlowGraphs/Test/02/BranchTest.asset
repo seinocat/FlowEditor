@@ -14,87 +14,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   serializedNodes: []
   nodes:
-  - rid: 3349422780891004928
-  - rid: 3349422780891004929
-  - rid: 3349422780891004930
-  - rid: 3349422780891004932
-  - rid: 3349422780891004933
-  - rid: 3349422780891004934
-  - rid: 3349422780891004935
-  - rid: 3349422780891004936
-  edges:
-  - GUID: e7e6a6f5-b86f-4819-bf97-1a23265df792
-    owner: {fileID: 11400000}
-    inputNodeGUID: 547222be-d764-4137-bdee-8d5b529e06e6
-    outputNodeGUID: fe9127b4-78cc-4190-b58d-8c6d1cae639e
-    inputFieldName: Input
-    outputFieldName: Output
-    inputPortIdentifier: 
-    outputPortIdentifier: 
-  - GUID: b0beb7e7-f2cf-412b-8a7b-b16f2c041764
-    owner: {fileID: 11400000}
-    inputNodeGUID: f6191b80-9b7c-462e-80b7-4191b5647e7f
-    outputNodeGUID: 547222be-d764-4137-bdee-8d5b529e06e6
-    inputFieldName: Input
-    outputFieldName: Output
-    inputPortIdentifier: 
-    outputPortIdentifier: 
-  - GUID: 7588ea9f-1d01-4da5-8876-5fc6fba744d7
-    owner: {fileID: 11400000}
-    inputNodeGUID: f60f4449-3e92-4f1e-9ffd-a75399f560a7
-    outputNodeGUID: f6191b80-9b7c-462e-80b7-4191b5647e7f
-    inputFieldName: Input
-    outputFieldName: Output
-    inputPortIdentifier: 
-    outputPortIdentifier: 
-  - GUID: 24eda95d-632b-40ed-a0c0-34838582fe4a
-    owner: {fileID: 11400000}
-    inputNodeGUID: 41d6cc35-860d-4c5a-9a8e-6b241fc2f6e5
-    outputNodeGUID: f60f4449-3e92-4f1e-9ffd-a75399f560a7
-    inputFieldName: Input
-    outputFieldName: Branchs
-    inputPortIdentifier: 
-    outputPortIdentifier: 0
-  - GUID: 9aa54007-7fb3-462f-8901-db14fa0962c0
-    owner: {fileID: 11400000}
-    inputNodeGUID: 5ad2708d-01f9-4cb8-b13b-97d93cb3b239
-    outputNodeGUID: f60f4449-3e92-4f1e-9ffd-a75399f560a7
-    inputFieldName: Input
-    outputFieldName: Branchs
-    inputPortIdentifier: 
-    outputPortIdentifier: 1
-  - GUID: 3eb06f79-c27a-4481-b8ee-27c0d82cba70
-    owner: {fileID: 11400000}
-    inputNodeGUID: 8ee34f32-58b5-44f9-8e62-24f3aaed1dbe
-    outputNodeGUID: f60f4449-3e92-4f1e-9ffd-a75399f560a7
-    inputFieldName: Input
-    outputFieldName: Branchs
-    inputPortIdentifier: 
-    outputPortIdentifier: 2
-  - GUID: 586d6374-f490-40db-b54f-7c757a720685
-    owner: {fileID: 11400000}
-    inputNodeGUID: a59951c1-ee91-44fa-af42-454e1a913a1f
-    outputNodeGUID: 41d6cc35-860d-4c5a-9a8e-6b241fc2f6e5
-    inputFieldName: Input
-    outputFieldName: Output
-    inputPortIdentifier: 
-    outputPortIdentifier: 
-  - GUID: 9fb32f68-5f39-46bf-b4fb-65f0a456f016
-    owner: {fileID: 11400000}
-    inputNodeGUID: a59951c1-ee91-44fa-af42-454e1a913a1f
-    outputNodeGUID: 5ad2708d-01f9-4cb8-b13b-97d93cb3b239
-    inputFieldName: Input
-    outputFieldName: Output
-    inputPortIdentifier: 
-    outputPortIdentifier: 
-  - GUID: c95a60cd-a460-4a29-af0b-65386ce82804
-    owner: {fileID: 11400000}
-    inputNodeGUID: a59951c1-ee91-44fa-af42-454e1a913a1f
-    outputNodeGUID: 8ee34f32-58b5-44f9-8e62-24f3aaed1dbe
-    inputFieldName: Input
-    outputFieldName: Output
-    inputPortIdentifier: 
-    outputPortIdentifier: 
+  - rid: 4362539496345174016
+  edges: []
   groups: []
   stackNodes: []
   pinnedElements: []
@@ -110,11 +31,11 @@ MonoBehaviour:
   references:
     version: 2
     RefIds:
-    - rid: 3349422780891004928
-      type: {class: RootNode, ns: FlowEditor.Editor, asm: Assembly-CSharp-Editor}
+    - rid: 4362539496345174016
+      type: {class: RootNode, ns: FlowEditor.Editor, asm: Flow.Editor}
       data:
         nodeCustomName: 
-        GUID: fe9127b4-78cc-4190-b58d-8c6d1cae639e
+        GUID: c6a53f29-5ef3-4fbe-9dc3-5018370b7a0b
         computeOrder: 0
         position:
           serializedVersion: 2
@@ -122,146 +43,6 @@ MonoBehaviour:
           y: 390.4
           width: 100
           height: 100
-        expanded: 0
-        debug: 0
-        nodeLock: 0
-        NodeOrder: -1
-        FlowType: 0
-    - rid: 3349422780891004929
-      type: {class: EventFlagNode, ns: FlowEditor.Editor, asm: Assembly-CSharp-Editor}
-      data:
-        nodeCustomName: 
-        GUID: 547222be-d764-4137-bdee-8d5b529e06e6
-        computeOrder: 1
-        position:
-          serializedVersion: 2
-          x: 883.9728
-          y: 384.82468
-          width: 204
-          height: 252
-        expanded: 0
-        debug: 0
-        nodeLock: 0
-        NodeOrder: -1
-        FlowType: 0
-        EventID: 0
-        EventName: 
-        TriggerType: 1
-        State: 1
-        Priority: 0
-        Sprite: {fileID: 0}
-        Text: 
-        Desc: 
-        Conditions: 
-    - rid: 3349422780891004930
-      type: {class: StartNode, ns: FlowEditor.Editor, asm: Assembly-CSharp-Editor}
-      data:
-        nodeCustomName: 
-        GUID: f6191b80-9b7c-462e-80b7-4191b5647e7f
-        computeOrder: 2
-        position:
-          serializedVersion: 2
-          x: 1153.5767
-          y: 385
-          width: 109
-          height: 75
-        expanded: 0
-        debug: 0
-        nodeLock: 0
-        NodeOrder: -1
-        FlowType: 0
-    - rid: 3349422780891004932
-      type: {class: SelectBranchNode, ns: FlowEditor.Editor, asm: Assembly-CSharp-Editor}
-      data:
-        nodeCustomName: 
-        GUID: f60f4449-3e92-4f1e-9ffd-a75399f560a7
-        computeOrder: 3
-        position:
-          serializedVersion: 2
-          x: 1354.8429
-          y: 385
-          width: 156
-          height: 138
-        expanded: 0
-        debug: 0
-        nodeLock: 0
-        NodeOrder: -1
-        FlowType: 0
-        PortCount: 3
-        BranchDatas:
-        - Conditions: 11270000
-          NextID: 0
-        - Conditions: a2860100
-          NextID: 0
-        - Conditions: 13270000
-          NextID: 0
-    - rid: 3349422780891004933
-      type: {class: SetGlobalVariableNode, ns: FlowEditor.Editor, asm: Assembly-CSharp-Editor}
-      data:
-        nodeCustomName: 
-        GUID: 41d6cc35-860d-4c5a-9a8e-6b241fc2f6e5
-        computeOrder: 4
-        position:
-          serializedVersion: 2
-          x: 1852
-          y: 347
-          width: 156
-          height: 113
-        expanded: 0
-        debug: 0
-        nodeLock: 0
-        NodeOrder: -1
-        FlowType: 0
-        GlobalKey: 
-        GlobalValue: 0
-    - rid: 3349422780891004934
-      type: {class: PlayNpcActionNode, ns: FlowEditor.Editor, asm: Assembly-CSharp-Editor}
-      data:
-        nodeCustomName: 
-        GUID: 5ad2708d-01f9-4cb8-b13b-97d93cb3b239
-        computeOrder: 5
-        position:
-          serializedVersion: 2
-          x: 1851.9712
-          y: 519.6327
-          width: 156
-          height: 94
-        expanded: 0
-        debug: 0
-        nodeLock: 0
-        NodeOrder: -1
-        FlowType: 0
-        ActionName: 
-    - rid: 3349422780891004935
-      type: {class: GetGlobalVariableNode, ns: FlowEditor.Editor, asm: Assembly-CSharp-Editor}
-      data:
-        nodeCustomName: 
-        GUID: 8ee34f32-58b5-44f9-8e62-24f3aaed1dbe
-        computeOrder: 6
-        position:
-          serializedVersion: 2
-          x: 1852
-          y: 673.0863
-          width: 156
-          height: 94
-        expanded: 0
-        debug: 0
-        nodeLock: 0
-        NodeOrder: -1
-        FlowType: 0
-        GlobalKey: 
-    - rid: 3349422780891004936
-      type: {class: EndNode, ns: FlowEditor.Editor, asm: Assembly-CSharp-Editor}
-      data:
-        nodeCustomName: 
-        GUID: a59951c1-ee91-44fa-af42-454e1a913a1f
-        computeOrder: 7
-        position:
-          serializedVersion: 2
-          x: 2219.8079
-          y: 476.9072
-          width: 67
-          height: 75
         expanded: 0
         debug: 0
         nodeLock: 0
