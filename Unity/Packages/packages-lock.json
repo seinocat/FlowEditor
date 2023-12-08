@@ -1,5 +1,12 @@
 {
   "dependencies": {
+    "com.seinocat.litjson": {
+      "version": "https://github.com/seinocat/LitJson.git#0.0.1",
+      "depth": 0,
+      "source": "git",
+      "dependencies": {},
+      "hash": "6324ec7926cfb00500b2de7be7247ca28420ed08"
+    },
     "com.unity.ai.navigation": {
       "version": "1.1.4",
       "depth": 0,

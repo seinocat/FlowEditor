@@ -1,1 +1,0 @@
-git subtree push --prefix=Unity/Assets/FlowEditor https://github.com/Svily/FlowEditor.git upm
