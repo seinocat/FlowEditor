@@ -19,7 +19,7 @@ namespace FlowEditor.Editor
         private Image m_FolderIcon;
         private List<GraphItemView> m_SubViews;
         private int m_Indent;
-        private string CollapseKey => $"FlowEvent_Collapse_{m_Data.EventPath}";
+        private string CollapseKey => $"FlowEvent_Collapse_{m_Data.FlowPath}";
         
         private DateTime lastClickTime;
         private float doubleClickThreshold = 0.4f;
