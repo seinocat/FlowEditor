@@ -5,7 +5,6 @@ using System.IO;
 using System.Reflection;
 using System.Text.RegularExpressions;
 using FlowEditor.Runtime;
-using Seino.Utils;
 using UnityEditor;
 using UnityEditor.Experimental.GraphView;
 using UnityEngine;
@@ -424,7 +423,7 @@ namespace FlowEditor.Editor
         {
             if (this.m_CurSelected == null) return;
 
-            var folders = FlowUtils.GetParentFolders(this.m_CurSelected.m_Data.EventPath);
+            var folders = FlowUtils.GetParentFolders(this.m_CurSelected.m_Data.FlowPath);
             foreach (var folder in folders)
             {
                 Cookie.SetPublic($"FlowEvent_Collapse_{folder}", 1);

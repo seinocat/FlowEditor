@@ -7,7 +7,7 @@ namespace FlowEditor.Editor
     {
         public string Name;
         public string Path;
-        public string EventPath;
+        public string FlowPath;
         public bool IsFolder;
         
         public string DiskPath => Application.dataPath.Replace("Assets", Path);
@@ -18,7 +18,7 @@ namespace FlowEditor.Editor
             GraphItemData data = new GraphItemData();
             data.IsFolder = true;
             data.Path = path;
-            data.EventPath = data.Path[data.EventDiskPath.Length..];
+            data.FlowPath = data.Path[data.EventDiskPath.Length..];
             data.Name = System.IO.Path.GetFileName(data.Path);
             return data;
         }
@@ -28,7 +28,7 @@ namespace FlowEditor.Editor
             GraphItemData data = new GraphItemData();
             data.IsFolder = false;
             data.Path = AssetDatabase.GetAssetPath(graph);
-            data.EventPath = data.Path[data.EventDiskPath.Length..];
+            data.FlowPath = data.Path[data.EventDiskPath.Length..];
             data.Name = graph.name;
             return data;
         }
