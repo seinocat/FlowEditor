@@ -1,8 +1,11 @@
 ﻿{
-  "name": "com.svily.flow",
-  "displayName": "FlowEditor",
-  "description": "Flow Editor",
-  "url" : "https://github.com/Svily/FlowEditor.git",
-  "version": "0.0.3",
-  "unity": "2022.3"
+  "name": "com.seinocat.flow",
+  "displayName": "Seino Flow Editor",
+  "description": "Node-Base Flow Editor",
+  "url" : "https://github.com/seinocat/FlowEditor.git",
+  "version": "0.0.4",
+  "unity": "2022.3",
+  "author": {
+    "name": "SeinoCat"
+  }
 }

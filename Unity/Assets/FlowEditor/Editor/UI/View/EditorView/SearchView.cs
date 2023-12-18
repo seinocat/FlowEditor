@@ -28,6 +28,15 @@ namespace FlowEditor.Editor
             Add(this.m_TextField);
         }
         
+        
+        public void ClearText()
+        {
+            this.m_InputText = string.Empty;
+            this.m_TextField.value = string.Empty;
+            FlowStaticData.SearchKey = string.Empty;
+            this.m_View.FileView.Repaint();
+        }
+        
         private void OnTextChanged(ChangeEvent<string> evt)
         {
             this.m_InputText = evt.newValue;

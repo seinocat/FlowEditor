@@ -5,6 +5,7 @@ using System.IO;
 using System.Reflection;
 using System.Text.RegularExpressions;
 using FlowEditor.Runtime;
+using Seino.Utils;
 using UnityEditor;
 using UnityEditor.Experimental.GraphView;
 using UnityEngine;
@@ -222,16 +223,34 @@ namespace FlowEditor.Editor
             
             if (this.m_Window.Graph != null)
             {
-                foreach (var view in this.contentContainer.Children())
+                if (m_CurSelected == null)
                 {
-                    if (view is GraphItemView item)
+                    foreach (var view in this.contentContainer.Children())
                     {
-                        if (item.m_Graph == this.m_Window.Graph)
+                        if (view is GraphItemView item)
                         {
-                            SetSelected(item);
-                            break;
+                            if (item.m_Graph == this.m_Window.Graph)
+                            {
+                                SetSelected(item);
+                                break;
+                            }
                         }
                     }
+                }
+                else
+                {
+                    foreach (var view in this.contentContainer.Children())
+                    {
+                        if (view is GraphItemView item)
+                        {
+                            if (item.m_Graph == m_CurSelected.m_Graph)
+                            {
+                                SetSelected(item);
+                                break;
+                            }
+                        }
+                    }
+                    
                 }
             }
             //Scroll定位
@@ -399,6 +418,19 @@ namespace FlowEditor.Editor
                 view.SetSelect(false);
                 this.m_SelectedList.Remove(view);
             }
+        }
+        
+        public void LocateSelect()
+        {
+            if (this.m_CurSelected == null) return;
+
+            var folders = FlowUtils.GetParentFolders(this.m_CurSelected.m_Data.EventPath);
+            foreach (var folder in folders)
+            {
+                Cookie.SetPublic($"FlowEvent_Collapse_{folder}", 1);
+            }
+
+            m_SearchView.ClearText();
         }
         
         #endregion

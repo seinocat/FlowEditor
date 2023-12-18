@@ -1,11 +1,18 @@
 {
   "dependencies": {
     "com.seinocat.litjson": {
-      "version": "https://github.com/seinocat/LitJson.git#0.0.1",
+      "version": "https://github.com/seinocat/LitJson.git#0.0.3",
       "depth": 0,
       "source": "git",
       "dependencies": {},
-      "hash": "6324ec7926cfb00500b2de7be7247ca28420ed08"
+      "hash": "4115ba699f2d930df7603cdee0f05d7f8611bef5"
+    },
+    "com.seinocat.utils": {
+      "version": "https://github.com/seinocat/SeinoUtils.git#0.0.3",
+      "depth": 0,
+      "source": "git",
+      "dependencies": {},
+      "hash": "63ebd2dd11f5e5c3fa262460c38033775e0edf01"
     },
     "com.unity.ai.navigation": {
       "version": "1.1.4",
