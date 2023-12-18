@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
+using System.Text;
 using GraphProcessor;
 using UnityEditor;
 
@@ -54,6 +55,39 @@ namespace FlowEditor.Editor
                     subFloders.Add(Path.GetFileName(folders[i]));
                 }
                 return subFloders;
+            }
+
+            return folders;
+        }
+        
+        public static List<string> GetParentFolders(string path)
+        {
+            var folderPath = path.Split('/').ToList();
+            List<string> folders = new List<string>();
+            var count = folderPath.Count;
+            for (int i = folderPath.Count - 1; i >= 0; i--)
+            {
+                if (i == count - 1)
+                {
+                    folderPath.RemoveAt(i);
+                    continue;
+                }
+                
+                StringBuilder resultBuilder = new StringBuilder();
+                // 遍历字符数组
+                for (int j = 0; j < folderPath.Count; j++)
+                {
+                    // 将字符添加到 StringBuilder
+                    resultBuilder.Append(folderPath[j]);
+                    // 如果不是最后一个字符，添加斜杠
+                    if (j < folderPath.Count - 1)
+                    {
+                        resultBuilder.Append('/');
+                    }
+                }
+                folderPath.RemoveAt(i);
+                folders.Add(resultBuilder.ToString());
+
             }
 
             return folders;

@@ -21,10 +21,11 @@ namespace FlowEditor.Editor
 
         protected override void AddButtons()
         {
-            AddToggle(new GUIContent("导出面板"), Cookie.GetPublic(SHOW_OPERATION, true), ShowOperation);
             AddToggle(new GUIContent("配置列表"), Cookie.GetPublic(SHOW_FILELIST, true), ShowFileList);
+            AddToggle(new GUIContent("导出面板"), Cookie.GetPublic(SHOW_OPERATION, true), ShowOperation);
             AddToggle(new GUIContent("小地图"), Cookie.GetPublic(SHOW_MINIMAP, true), ShowMiniMap);
-            AddButton(new GUIContent("计算Order"), ()=> {m_GraphView.Window.Graph.ComputeGraphOrder();});
+            AddButton(new GUIContent("定位"), LocateFile);
+            // AddButton(new GUIContent("计算Order"), ()=> {m_GraphView.Window.Graph.ComputeGraphOrder();});
             AddButton(new GUIContent("刷新"), Refresh);
             AddButton(new GUIContent("导出当前"), Export, false);
             AddButton(new GUIContent("一键导出"), OneKeyExport, false);
@@ -70,6 +71,11 @@ namespace FlowEditor.Editor
                 Cookie.SetPublic(SHOW_MINIMAP, false);
                 this.m_GraphView.DelMiniMapView();
             }
+        }
+        
+        public void LocateFile()
+        {
+            this.m_GraphView.FileView.LocateSelect();
         }
 
         public void Refresh()
