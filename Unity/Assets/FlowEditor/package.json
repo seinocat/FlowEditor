@@ -5,6 +5,10 @@
   "url" : "https://github.com/seinocat/FlowEditor.git",
   "version": "0.0.4",
   "unity": "2022.3",
+  "dependencies": {
+    "com.seinocat.utils" : "https://github.com/seinocat/SeinoUtils.git#0.0.7",
+    "com.seinocat.litjson" : "https://github.com/seinocat/LitJson.git#0.0.5"
+  },
   "author": {
     "name": "SeinoCat"
   }
