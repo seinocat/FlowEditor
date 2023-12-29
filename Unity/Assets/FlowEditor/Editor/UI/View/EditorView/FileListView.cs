@@ -5,6 +5,7 @@ using System.IO;
 using System.Reflection;
 using System.Text.RegularExpressions;
 using FlowEditor.Runtime;
+using Seino.Utils;
 using UnityEditor;
 using UnityEditor.Experimental.GraphView;
 using UnityEngine;
@@ -281,11 +282,54 @@ namespace FlowEditor.Editor
             for (int i = 0; i < this.m_GraphsList.Count; i++)
             {
                 var graphItem = this.m_GraphsList[i];
-                
-                if (!Regex.IsMatch(graphItem.name, searchkey, RegexOptions.IgnoreCase))
+                bool isTarget = Regex.IsMatch(graphItem.name, searchkey, RegexOptions.IgnoreCase);
+
+                if (!isTarget)
                 {
-                    continue;
+                    var eventNode = graphItem.GetNode<EventFlagNode>();
+                    foreach (var node in eventNode)
+                    {
+                        if (Regex.IsMatch(node.EventID.ToString(), searchkey, RegexOptions.IgnoreCase))
+                            isTarget = true;
+                        if (Regex.IsMatch(node.EventName, searchkey, RegexOptions.IgnoreCase))
+                            isTarget = true;
+                        if (Regex.IsMatch(node.Text, searchkey, RegexOptions.IgnoreCase))
+                            isTarget = true;
+                    }
+
+                    bool nodetype = searchkey.StartsWith("n:");
+                    if (nodetype)
+                    {
+                        string nodename = searchkey.Split("n:")[1];
+                        if (nodename.IsNullOrEmpty()) return;
+                        var nodes = graphItem.GetNode<FlowNodeBase>();
+                        foreach (var node in nodes)
+                        {
+                            if (Regex.IsMatch(node.name, nodename, RegexOptions.IgnoreCase))
+                            {
+                                isTarget = true;
+                                break;
+                            }
+                            if (Regex.IsMatch(node.GetType().Name, nodename, RegexOptions.IgnoreCase))
+                            {
+                                isTarget = true;
+                                break;
+                            }
+                        }
+                    }
                 }
+                
+                if (!isTarget)
+                {
+                    var eventNode = graphItem.GetNode<InteractItemNode>();
+                    foreach (var node in eventNode)
+                    {
+                        if (Regex.IsMatch(node.Text, searchkey, RegexOptions.IgnoreCase))
+                            isTarget = true;
+                    }
+                }
+                
+                if (!isTarget) continue;
 
                 var graphItemView = GraphItemView.CreateGraphView(this, this.m_Window, 0, graphItem);
                 itemList.Add(graphItemView);
