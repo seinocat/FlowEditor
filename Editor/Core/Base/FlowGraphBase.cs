@@ -1,4 +1,5 @@
-﻿using GraphProcessor;
+﻿using System.Collections.Generic;
+using GraphProcessor;
 using FlowEditor.Runtime;
 using UnityEngine;
 
@@ -13,6 +14,20 @@ namespace FlowEditor.Editor
         public FlowGraphBase()
         {
             this.Timestamp = TimeHelper.GetTimestamp();
+        }
+        
+        public List<T> GetNode<T>() where T : FlowNodeBase
+        {
+            List<T> list = new List<T>();
+            foreach (var node in this.nodes)
+            {
+                if (node is T @base)
+                {
+                    list.Add(@base);
+                }
+            }
+
+            return list;
         }
         
         public bool ComputeGraphOrder()
