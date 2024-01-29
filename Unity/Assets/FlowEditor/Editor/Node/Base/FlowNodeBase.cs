@@ -13,6 +13,12 @@ namespace FlowEditor.Editor
         public int NodeOrder = -1;
         
         /// <summary>
+        /// 流程Id
+        /// </summary>
+        [HideInInspector]
+        public int FlowId = -1;
+        
+        /// <summary>
         /// 流程节点
         /// </summary>
         [HideInInspector]

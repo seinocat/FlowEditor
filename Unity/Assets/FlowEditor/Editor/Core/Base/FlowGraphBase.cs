@@ -32,25 +32,25 @@ namespace FlowEditor.Editor
         
         public bool ComputeGraphOrder()
         {
-            foreach (var node in nodes)
-            {
-                (node as FlowNodeBase).NodeOrder = -1;
-                (node as FlowNodeBase).FlowType = FlowType.None;
-            }
+            ResetNode();
+            int flowId = 0;
             
             foreach (var node in nodes)
             {
                 if (node is EventFlagNode eventFlag)
                 {
+                    eventFlag.FlowType = FlowType.Event;
                     if (eventFlag.GetOutputNodeList().Count > 0)
                     {
                         var startNode = eventFlag.GetOutputNodeList()[0];
                         if (startNode is StartNode initNode)
                         {
                             int order = 1;
+                            eventFlag.FlowId = ++flowId;
+                            initNode.FlowId = flowId;
                             initNode.NodeOrder = order;
                             initNode.FlowType = FlowType.Event;
-                            if (!ComputeNodeOrder(initNode, ref order, FlowType.Event))
+                            if (!ComputeNodeOrder(initNode, ref order, FlowType.Event, flowId))
                             {
                                 return false;
                             }
@@ -58,17 +58,20 @@ namespace FlowEditor.Editor
                     }
                    
                 }
-                else if (node is InteractItemNode)
+                else if (node is InteractItemNode interactItemNode)
                 {
+                    interactItemNode.FlowType = FlowType.Interact;
                     foreach (var output in node.GetOutputNodeList())
                     {
                         var outputNode = output as FlowNodeBase;
                         if (outputNode is not InteractItemNode)
                         {
                             int order = 1;
+                            interactItemNode.FlowId = ++flowId;
                             outputNode.NodeOrder = order;
+                            outputNode.FlowId = flowId;
                             outputNode.FlowType = FlowType.Interact;
-                            if (!ComputeNodeOrder(outputNode, ref order, FlowType.Interact))
+                            if (!ComputeNodeOrder(outputNode, ref order, FlowType.Interact, flowId))
                             {
                                 return false;
                             }
@@ -79,25 +82,70 @@ namespace FlowEditor.Editor
         
             return true;
         }
-        
-        private bool ComputeNodeOrder(FlowNodeBase nodeBase, ref int order, FlowType type)
+
+        private bool ComputeNodeOrder(FlowNodeBase nodeBase, ref int order, FlowType type, int flowId)
         {
             foreach (var output in nodeBase.GetOutputNodeList())
             {
+                if (!nodes.Contains(output))
+                    continue;
+                
                 var outputNode = output as FlowNodeBase;
-                outputNode.NodeOrder = ++order;
+                if (outputNode is EndNode)
+                {
+                    outputNode.NodeOrder = 9999;
+                    outputNode.FlowId = -1;
+                }
+                else
+                {
+                    outputNode.NodeOrder = ++order;
+                    outputNode.FlowId = flowId;
+                }
+                
                 if (outputNode.FlowType != FlowType.None && outputNode.FlowType != type)
                 {
-                    Debug.LogError($"事件配置{name}含有流程交叉，请检查配置！");
+                    Debug.LogError($"事件配置{name}，含有流程交叉，请检查配置！");
                     return false;
                 }
+
+                if (type == FlowType.Interact && outputNode is ServerNodeBase)
+                {
+                    Debug.LogError($"事件配置{name}，交互流程中含有服务器节点，请检查配置！");
+                    return false;
+                }
+                
                 outputNode.FlowType = type;
                 if (outputNode.GetOutputNodeList().Count > 0)
                 {
-                    ComputeNodeOrder(outputNode, ref order, type);
+                    ComputeNodeOrder(outputNode, ref order, type, flowId);
                 }
             }
         
+            return true;
+        }
+        
+        private void ResetNode()
+        {
+            foreach (var node in nodes)
+            {
+                var nodebase = node as FlowNodeBase;
+                nodebase.FlowId = -1;
+                nodebase.FlowType = FlowType.None;
+            }
+        }
+        
+        private bool CheckNode()
+        {
+            foreach (var node in nodes)
+            {
+                var nodebase = node as FlowNodeBase;
+                if (nodebase.FlowType == FlowType.None)
+                {
+                    Debug.LogError($"事件配置{name}，连线错误或含有孤立节点，请检查配置！");
+                    return false;
+                }
+            }
+
             return true;
         }
     }
