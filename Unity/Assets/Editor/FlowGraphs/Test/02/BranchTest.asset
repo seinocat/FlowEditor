@@ -14,7 +14,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   serializedNodes: []
   nodes:
-  - rid: 4362539496345174016
+  - rid: 2692524315650555905
+  - rid: 2692524315650555906
   edges: []
   groups: []
   stackNodes: []
@@ -23,19 +24,19 @@ MonoBehaviour:
   serializedParameterList: []
   stickyNotes: []
   nodeInspectorReference: {fileID: 0}
-  position: {x: 368, y: 71, z: 0}
-  scale: {x: 0.7561437, y: 0.7561437, z: 1}
+  position: {x: -713, y: -762, z: 0}
+  scale: {x: 2, y: 2, z: 1}
   Timestamp: 1697177956
   OpenCount: 0
   m_Window: {fileID: 0}
   references:
     version: 2
     RefIds:
-    - rid: 4362539496345174016
-      type: {class: RootNode, ns: FlowEditor.Editor, asm: Flow.Editor}
+    - rid: 2692524315650555905
+      type: {class: RootNode, ns: FlowEditor.Editor, asm: Seino.Flow.Editor}
       data:
         nodeCustomName: 
-        GUID: c6a53f29-5ef3-4fbe-9dc3-5018370b7a0b
+        GUID: 5b24f406-9406-4f0c-9f4f-c8534192026b
         computeOrder: 0
         position:
           serializedVersion: 2
@@ -48,3 +49,22 @@ MonoBehaviour:
         nodeLock: 0
         NodeOrder: -1
         FlowType: 0
+    - rid: 2692524315650555906
+      type: {class: GiveItemsNode, ns: FlowEditor.Editor, asm: Seino.Flow.Editor}
+      data:
+        nodeCustomName: 
+        GUID: cb1bea54-74c0-442f-b46a-d77efab6d457
+        computeOrder: 1
+        position:
+          serializedVersion: 2
+          x: 865.5
+          y: 450.5
+          width: 156
+          height: 113
+        expanded: 0
+        debug: 0
+        nodeLock: 0
+        NodeOrder: -1
+        FlowType: 0
+        ItemID: 0
+        ItemCount: 0

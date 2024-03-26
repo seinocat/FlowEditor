@@ -1,9 +1,7 @@
 {
     "name": "Seino.Flow.Runtime",
     "rootNamespace": "",
-    "references": [
-        "LitJson"
-    ],
+    "references": [],
     "includePlatforms": [],
     "excludePlatforms": [],
     "allowUnsafeCode": false,
