@@ -11,7 +11,7 @@ namespace SeinoCat.FlowEditor.Editor
         public bool IsFolder;
         
         public string DiskPath => Application.dataPath.Replace("Assets", Path);
-        public string EventDiskPath = "Assets/Editor/FlowGraphs/";
+        public string EventDiskPath => $"{FlowSetting.GraphRootPath}/";
         
         public static GraphItemData CreateDictory(string path)
         {

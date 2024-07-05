@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   serializedNodes: []
   nodes:
-  - rid: 2692524315650555904
+  - rid: 4632540575722373120
   edges: []
   groups: []
   stackNodes: []
@@ -31,11 +31,11 @@ MonoBehaviour:
   references:
     version: 2
     RefIds:
-    - rid: 2692524315650555904
-      type: {class: RootNode, ns: FlowEditor.Editor, asm: Seino.Flow.Editor}
+    - rid: 4632540575722373120
+      type: {class: RootNode, ns: SeinoCat.FlowEditor.Editor, asm: Seino.Flow.Editor}
       data:
         nodeCustomName: 
-        GUID: cf5036c2-ffe3-418b-a4ee-5b4720756b7b
+        GUID: cde7d5ed-fd7d-41e1-84ea-c9d3991a708f
         computeOrder: 0
         position:
           serializedVersion: 2
@@ -47,4 +47,5 @@ MonoBehaviour:
         debug: 0
         nodeLock: 0
         NodeOrder: -1
+        FlowId: -1
         FlowType: 0

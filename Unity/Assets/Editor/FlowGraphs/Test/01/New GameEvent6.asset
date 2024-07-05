@@ -10,7 +10,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 929ac517ecf84662a6317a55486b3f64, type: 3}
-  m_Name: BranchTest
+  m_Name: New GameEvent6
   m_EditorClassIdentifier: 
   serializedNodes: []
   nodes: []
@@ -22,9 +22,9 @@ MonoBehaviour:
   serializedParameterList: []
   stickyNotes: []
   nodeInspectorReference: {fileID: 0}
-  position: {x: -713, y: -762, z: 0}
-  scale: {x: 2, y: 2, z: 1}
-  Timestamp: 1697177956
+  position: {x: 0, y: 0, z: 0}
+  scale: {x: 1, y: 1, z: 1}
+  Timestamp: 1720168854
   OpenCount: 0
   m_Window: {fileID: 0}
   references:

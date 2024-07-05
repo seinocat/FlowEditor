@@ -19,7 +19,7 @@ namespace SeinoCat.FlowEditor.Editor
         private Image m_FolderIcon;
         private List<GraphItemView> m_SubViews;
         private int m_Indent;
-        private string CollapseKey => $"FlowEvent_Collapse_{m_Data.FlowPath}";
+        private string CollapseKey => FlowSetting.GetCollapseKey(m_Data.FlowPath);
         
         private DateTime lastClickTime;
         private float doubleClickThreshold = 0.4f;
@@ -72,7 +72,7 @@ namespace SeinoCat.FlowEditor.Editor
                     {
                         if (this.m_Data.IsFolder)
                         {
-                            DoCollapse(!this.Collapse);
+                            SetCollapse(!this.Collapse);
                         }
                         else
                         {
@@ -105,7 +105,7 @@ namespace SeinoCat.FlowEditor.Editor
         public void SetSelect(bool value)
         {
             this.IsSelected = value;
-            this.style.backgroundColor = value ? new Color(0.22f, 0.4f, 0.67f) : new Color(0f,0f,0f,0f);
+            this.style.backgroundColor = FlowSetting.GetSelectColor(value);
         }
         
         private void BuildContextMenu(ContextualMenuPopulateEvent evt)
@@ -130,17 +130,15 @@ namespace SeinoCat.FlowEditor.Editor
             }
         }
 
-        public void DoCollapse(bool value)
+        public void SetCollapse(bool value)
         {
-            if (this.Collapse == value) return;
+            if (this.Collapse == value) 
+                return;
             
             this.Collapse = value;
             Cookie.SetPublic(this.CollapseKey, this.Collapse ? 0 : 1);
-            if (ExistSubFolderOrFile())
-                this.m_FolderCollapse.text = this.Collapse ? "▶" : "▼";
-            else
-                this.m_FolderCollapse.text = "    ";
-            this.m_FolderIcon.sprite = this.Collapse ? this.m_Window.GraphView.FolderClose : this.m_Window.GraphView.FolderOpen;
+            this.m_FolderCollapse.text = ExistSubFolderOrFile() ? FlowSetting.GetArrowIcon(this.Collapse) : FlowSetting.ArrowIndent;
+            this.m_FolderIcon.sprite = FlowSetting.GetFolderIcon(this.Collapse);
             if (!this.Collapse)
             {
                 DrawSubFolder();
@@ -159,10 +157,7 @@ namespace SeinoCat.FlowEditor.Editor
             
             this.m_FolderCollapse = new Label();
             this.m_FolderCollapse.style.fontSize = 8;
-            if (ExistSubFolderOrFile())
-                this.m_FolderCollapse.text = this.Collapse ? "▶" : "▼";
-            else
-                this.m_FolderCollapse.text = "    ";
+            this.m_FolderCollapse.text = ExistSubFolderOrFile() ? FlowSetting.GetArrowIcon(this.Collapse) : FlowSetting.ArrowIndent;
             this.m_FolderCollapse.style.marginLeft = 20 * this.m_Indent;
             Add(m_FolderCollapse);
             
@@ -170,19 +165,19 @@ namespace SeinoCat.FlowEditor.Editor
             {
                 if (this.m_Data.IsFolder)
                 {
-                    DoCollapse(!this.Collapse);
+                    SetCollapse(!this.Collapse);
                 }
             });
             
             this.m_FolderIcon = new Image();
-            m_FolderIcon.sprite = this.Collapse ? this.m_Window.GraphView.FolderClose : this.m_Window.GraphView.FolderOpen;
-            m_FolderIcon.style.width = 15;
-            m_FolderIcon.style.height = 15;
+            m_FolderIcon.sprite = this.Collapse ? FlowSetting.FolderCloseIcon : FlowSetting.FolderOpenIcon;
+            m_FolderIcon.style.width = FlowSetting.FolderIconWidth;
+            m_FolderIcon.style.height = FlowSetting.FolderIconHeight;
             Add(m_FolderIcon);
 
             Label graphName = new Label();
             graphName.text = this.m_Data.Name;
-            graphName.style.fontSize = 12;
+            graphName.style.fontSize = FlowSetting.FileFontSize;
             graphName.style.flexGrow = 1;
             Add(graphName);
         }
@@ -201,10 +196,10 @@ namespace SeinoCat.FlowEditor.Editor
             this.contentContainer.style.justifyContent = Justify.Center;
             
             Image graphIcon = new Image();
-            graphIcon.sprite = this.m_Window.GraphView.GraphIcon;
+            graphIcon.sprite = FlowSetting.FileIcon;
             graphIcon.style.marginLeft = 20 * this.m_Indent;
-            graphIcon.style.width = 15;
-            graphIcon.style.height = 15;
+            graphIcon.style.width = FlowSetting.FileIconWidth;
+            graphIcon.style.height = FlowSetting.FileIconHeight;
             Add(graphIcon);
             
             Label graphName = new Label();

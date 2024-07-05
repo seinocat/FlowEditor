@@ -45,6 +45,7 @@ namespace SeinoCat.FlowEditor.Editor
             if (fieldInfo != null) this.m_Scroll = fieldInfo.GetValue(this) as ScrollView;
             var width = Cookie.GetPublic(WIDTH, 425f);
             var height = Cookie.GetPublic(HEIGHT, 1000f);
+            FlowSetting.Initialize();
             SetPosition(new Rect(0, 23, width, height));
             Register();
             DrawView();
@@ -116,7 +117,7 @@ namespace SeinoCat.FlowEditor.Editor
                             }
                             else
                             {
-                                m_CurSelected.DoCollapse(true);
+                                m_CurSelected.SetCollapse(true);
                             }
                         }
                         else
@@ -164,7 +165,7 @@ namespace SeinoCat.FlowEditor.Editor
                             }
                             else
                             {
-                                m_CurSelected.DoCollapse(false);
+                                m_CurSelected.SetCollapse(false);
                             } 
                         }
                         else
@@ -193,7 +194,7 @@ namespace SeinoCat.FlowEditor.Editor
         
         private void DrawView()
         {
-            this.m_GraphsList = FlowUtils.LoadAllAssets<FlowGraphBase>(FlowGraphWindow.ResourcePath);
+            this.m_GraphsList = FlowUtils.LoadAllAssets<FlowGraphBase>(FlowSetting.GraphRootPath);
             this.contentContainer.Clear();
             ExportData.Clear();
             ClearSelected();
@@ -259,7 +260,7 @@ namespace SeinoCat.FlowEditor.Editor
         
         private void DrawHierarchy()
         {
-            var folders = FlowUtils.GetSubFolders(FlowGraphWindow.ResourcePath);
+            var folders = FlowUtils.GetSubFolders(FlowSetting.GraphRootPath);
             for (int i = 0; i < folders.Count; i++)
             {
                 var view = GraphItemView.CreateFolderView(this, this.m_Window, 0, folders[i]);
@@ -267,7 +268,7 @@ namespace SeinoCat.FlowEditor.Editor
                 view.DrawView();
             }
             
-            var graphBases = FlowUtils.LoadAllAssets<FlowGraphBase>(FlowGraphWindow.ResourcePath, SearchOption.TopDirectoryOnly);
+            var graphBases = FlowUtils.LoadAllAssets<FlowGraphBase>(FlowSetting.GraphRootPath, SearchOption.TopDirectoryOnly);
             for (int i = 0; i < graphBases.Count; i++)
             {
                 var view = GraphItemView.CreateGraphView(this, this.m_Window, 0, graphBases[i]);
@@ -586,7 +587,7 @@ namespace SeinoCat.FlowEditor.Editor
             CustomGameEventWindow.OpenWindow("创建新事件", "New GameEvent", (CreateName) =>
             {
                 var graph = ScriptableObject.CreateInstance<FlowGraphBase>();
-                var path = $"Assets/Editor/FlowGraphs/{CreateName}.asset";
+                var path = FlowSetting.GetFlowAssetPath(CreateName);
                 if (!IsGraphExist(CreateName))
                 {
                     AssetDatabase.CreateAsset(graph, path);
@@ -629,7 +630,7 @@ namespace SeinoCat.FlowEditor.Editor
         
         private void AddEvent(GraphItemView view)
         {
-            CustomGameEventWindow.OpenWindow("创建新事件", "New GameEvent", (CreateName) =>
+            CustomGameEventWindow.OpenWindow("创建新事件", $"New GameEvent {FlowGraphWindow.GraphBases.Count+1}", (CreateName) =>
             {
                 var graph = ScriptableObject.CreateInstance<FlowGraphBase>();
                 var path = Path.Combine(view.m_Data.Path, $"{CreateName}.asset");

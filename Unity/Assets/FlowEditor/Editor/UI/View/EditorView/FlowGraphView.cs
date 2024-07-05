@@ -18,17 +18,9 @@ namespace SeinoCat.FlowEditor.Editor
         public OperationView OperationView;
         public FlowMiniMapView MiniMapView;
         
-        public Sprite FolderOpen;
-        public Sprite FolderClose;
-        public Sprite GraphIcon;
-
         public FlowGraphView(FlowGraphWindow window) : base(window)
         {
             this.Window = window;
-            this.FolderOpen = Resources.Load<Sprite>("Icon/folder1");
-            this.FolderClose = Resources.Load<Sprite>("Icon/folder0");
-            this.GraphIcon = Resources.Load<Sprite>("Icon/graph");
-            
             Insert(0, new GraphGridView());
         }
 

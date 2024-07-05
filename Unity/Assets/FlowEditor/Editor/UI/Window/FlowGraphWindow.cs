@@ -9,11 +9,11 @@ namespace SeinoCat.FlowEditor.Editor
 {
     public class FlowGraphWindow : BaseGraphWindow
     {
-        public static string ResourcePath = "Assets/Editor/FlowGraphs";
+        
         
         public FlowGraphBase Graph => this.graph as FlowGraphBase;
         public FlowGraphView GraphView => this.graphView as FlowGraphView;
-        public static List<FlowGraphBase> GraphBases => FlowUtils.LoadAllAssets<FlowGraphBase>(ResourcePath);
+        public static List<FlowGraphBase> GraphBases => FlowUtils.LoadAllAssets<FlowGraphBase>(FlowSetting.GraphRootPath);
         
         public static string OPEN_GRAPH = "Flow_CurOpen";
         
@@ -66,7 +66,7 @@ namespace SeinoCat.FlowEditor.Editor
         public static void CreateGraphAsset()
         {
             var graph = CreateInstance<FlowGraphBase>();
-            var path = $"{ResourcePath}/New Flow{GraphBases.Count + 1}.asset";
+            var path = $"{FlowSetting.GraphRootPath}/New Flow{GraphBases.Count + 1}.asset";
             AssetDatabase.CreateAsset(graph, path);
             AssetDatabase.Refresh();
         }
