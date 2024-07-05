@@ -34,7 +34,16 @@ namespace SeinoCat.FlowEditor.Editor
 
         #region 缓存字段
 
-        
+        [LabelText("小地图坐标X")]
+        public static string MiniMapPosX = "FlowEditor_MiniMap_PosX";
+        [LabelText("小地图坐标Y")]
+        public static string MiniMapPosY = "FlowEditor_MiniMap_PosY";
+        [LabelText("导出面板开关")]
+        public static string OperationSwitch = "FlowEditor_ShowOperation";
+        [LabelText("配置列表开关")]
+        public static string FlieListViewSwitch = "FlowEditor_ShowFileList";
+        [LabelText("小地图开关")]
+        public static string MiniMapSwitch = "FlowEditor_MiniMap";
 
         #endregion
         

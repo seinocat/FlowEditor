@@ -56,7 +56,8 @@ namespace SeinoCat.FlowEditor.Editor
             {
                 foreach (var type in clientTypes)
                 {
-                    if (type.type == FlowNodeType.End) continue;
+                    if (type.type == FlowNodeType.End) 
+                        continue;
 
                     if (type.value > maxIndex)
                     {

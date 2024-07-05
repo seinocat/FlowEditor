@@ -7,13 +7,10 @@ namespace SeinoCat.FlowEditor.Editor
 {
     public sealed class FlowMiniMapView : MiniMap
     {
-        private const string POSX = "FlowEditor_MiniMap_PosX";
-        private const string POSY = "FlowEditor_MiniMap_PosY";
-
         public FlowMiniMapView()
         {
-            var posx = Cookie.GetPublic(POSX, 0f);
-            var posy = Cookie.GetPublic(POSY, 200f);
+            var posx = Cookie.GetPublic(FlowSetting.MiniMapPosX, 0f);
+            var posy = Cookie.GetPublic(FlowSetting.MiniMapPosY, 200f);
             SetPosition(new Rect(posx, posy, 300, 200));
             RegisterCallback<GeometryChangedEvent>(OnGeometryChanged);
         }
@@ -21,8 +18,8 @@ namespace SeinoCat.FlowEditor.Editor
         private void OnGeometryChanged(GeometryChangedEvent evt)
         {
             var rect = GetPosition();
-            Cookie.SetPublic(POSX, rect.position.x);
-            Cookie.SetPublic(POSY, rect.position.y);
+            Cookie.SetPublic(FlowSetting.MiniMapPosX, rect.position.x);
+            Cookie.SetPublic(FlowSetting.MiniMapPosY, rect.position.y);
         }
     }
 }

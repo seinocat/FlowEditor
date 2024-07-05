@@ -7,23 +7,20 @@ namespace SeinoCat.FlowEditor.Editor
     public class FlowToolBarView : ToolbarView
     {
         private FlowGraphView m_GraphView;
-        private const string SHOW_OPERATION = "FlowEditor_ShowOperation";
-        private const string SHOW_FILELIST = "FlowEditor_ShowFileList";
-        private const string SHOW_MINIMAP = "FlowEditor_MiniMap";
         
         public FlowToolBarView(BaseGraphView graphView) : base(graphView)
         {
             this.m_GraphView = graphView as FlowGraphView;
-            this.ShowOperation(Cookie.GetPublic(SHOW_OPERATION, true));
-            this.ShowFileList(Cookie.GetPublic(SHOW_FILELIST, true));
-            this.ShowMiniMap(Cookie.GetPublic(SHOW_MINIMAP, false));
+            this.ShowOperation(Cookie.GetPublic(FlowSetting.OperationSwitch, true));
+            this.ShowFileList(Cookie.GetPublic(FlowSetting.FlieListViewSwitch, true));
+            this.ShowMiniMap(Cookie.GetPublic(FlowSetting.MiniMapSwitch, false));
         }
 
         protected override void AddButtons()
         {
-            AddToggle(new GUIContent("配置列表"), Cookie.GetPublic(SHOW_FILELIST, true), ShowFileList);
-            AddToggle(new GUIContent("导出面板"), Cookie.GetPublic(SHOW_OPERATION, true), ShowOperation);
-            AddToggle(new GUIContent("小地图"), Cookie.GetPublic(SHOW_MINIMAP, true), ShowMiniMap);
+            AddToggle(new GUIContent("配置列表"), Cookie.GetPublic(FlowSetting.OperationSwitch, true), ShowFileList);
+            AddToggle(new GUIContent("导出面板"), Cookie.GetPublic(FlowSetting.FlieListViewSwitch, true), ShowOperation);
+            AddToggle(new GUIContent("小地图"), Cookie.GetPublic(FlowSetting.MiniMapSwitch, true), ShowMiniMap);
             AddButton(new GUIContent("定位"), LocateFile);
             // AddButton(new GUIContent("计算Order"), ()=> {m_GraphView.Window.Graph.ComputeGraphOrder();});
             AddButton(new GUIContent("刷新"), Refresh);
@@ -35,12 +32,12 @@ namespace SeinoCat.FlowEditor.Editor
         {
             if (show)
             {
-                Cookie.SetPublic(SHOW_OPERATION, true);
+                Cookie.SetPublic(FlowSetting.OperationSwitch, true);
                 this.m_GraphView.DrawOperationView();
             }
             else
             {
-                Cookie.SetPublic(SHOW_OPERATION, false);
+                Cookie.SetPublic(FlowSetting.OperationSwitch, false);
                 this.m_GraphView.DelOperationView();
             }
         }
@@ -49,12 +46,12 @@ namespace SeinoCat.FlowEditor.Editor
         {
             if (show)
             {
-                Cookie.SetPublic(SHOW_FILELIST, true);
+                Cookie.SetPublic(FlowSetting.FlieListViewSwitch, true);
                 this.m_GraphView.DrawFileListView();
             }
             else
             {
-                Cookie.SetPublic(SHOW_FILELIST, false);
+                Cookie.SetPublic(FlowSetting.FlieListViewSwitch, false);
                 this.m_GraphView.DelFileListView();
             }
         }
@@ -63,12 +60,12 @@ namespace SeinoCat.FlowEditor.Editor
         {
             if (show)
             {
-                Cookie.SetPublic(SHOW_MINIMAP, true);
+                Cookie.SetPublic(FlowSetting.MiniMapSwitch, true);
                 this.m_GraphView.DrawMiniMapView();
             }
             else
             {
-                Cookie.SetPublic(SHOW_MINIMAP, false);
+                Cookie.SetPublic(FlowSetting.MiniMapSwitch, false);
                 this.m_GraphView.DelMiniMapView();
             }
         }
