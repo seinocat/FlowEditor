@@ -23,8 +23,8 @@ MonoBehaviour:
   serializedParameterList: []
   stickyNotes: []
   nodeInspectorReference: {fileID: 0}
-  position: {x: -569, y: -286, z: 0}
-  scale: {x: 1.7490063, y: 1.7490063, z: 1}
+  position: {x: -459, y: -311, z: 0}
+  scale: {x: 2, y: 2, z: 1}
   Timestamp: 1691634545
   OpenCount: 2
   m_Window: {fileID: 0}

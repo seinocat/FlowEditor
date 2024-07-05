@@ -41,7 +41,7 @@ namespace SeinoCat.FlowEditor.Editor
         }
         
         [Button("客户端重排序")]
-        public void SortClinet()
+        public void SortClient()
         {
             int startIndex = 1000;
             foreach (var type in this.EnumDatas)
