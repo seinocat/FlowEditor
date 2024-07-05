@@ -1,7 +1,8 @@
 ﻿using System;
-using FlowEditor.Runtime;
 using GraphProcessor;
-namespace FlowEditor.Editor
+using SeinoCat.FlowEditor.Runtime;
+
+namespace SeinoCat.FlowEditor.Editor
 {
     [NodeMenuItem("配置/根节点"), FlowNode, Serializable]
     public class RootNode : EditorNodeBase

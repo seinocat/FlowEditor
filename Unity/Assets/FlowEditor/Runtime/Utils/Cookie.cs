@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-namespace FlowEditor.Runtime
+namespace SeinoCat.FlowEditor.Runtime
 {
     public class Cookie
     {

@@ -1,7 +1,7 @@
 ﻿using UnityEditor;
 using UnityEngine;
 
-namespace FlowEditor.Editor
+namespace SeinoCat.FlowEditor.Editor
 {
     public class GraphItemData
     {

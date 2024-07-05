@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace FlowEditor.Runtime
+namespace SeinoCat.FlowEditor.Runtime
 {
     [AttributeUsage(AttributeTargets.Class, AllowMultiple = true)]
     public class FlowNodeAttribute : Attribute

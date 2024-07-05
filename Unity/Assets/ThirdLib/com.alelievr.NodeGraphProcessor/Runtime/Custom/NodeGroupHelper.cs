@@ -6,8 +6,8 @@ namespace GraphProcessor
     public static class NodeGroupHelper
     {
         public static Dictionary<int, NodeGroupData> NodeGroups;
-        public static string Path => Application.dataPath + "/Editor/FlowEditor/Resource/Config/NodeGroupConfig.json";
-        public static string LoadPath => "Assets/FlowEditor/Resource/Config/NodeGroupConfig.json";
+        public static string Path => Application.dataPath + "/Editor/FlowEditor/Resources/Config/NodeGroupConfig.json";
+        public static string LoadPath => "Assets/FlowEditor/Resources/Config/NodeGroupConfig.json";
 
 #if UNITY_EDITOR
         public static void LoadConfig()

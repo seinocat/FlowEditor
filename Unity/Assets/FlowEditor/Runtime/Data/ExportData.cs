@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-namespace FlowEditor.Runtime
+namespace SeinoCat.FlowEditor.Runtime
 {
     [Serializable, ExportData]
     public class BranchData

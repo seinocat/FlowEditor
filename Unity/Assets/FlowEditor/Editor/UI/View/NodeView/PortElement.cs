@@ -4,7 +4,7 @@ using UnityEditor.Experimental.GraphView;
 using UnityEngine;
 using UnityEngine.UIElements;
 
-namespace FlowEditor.Editor
+namespace SeinoCat.FlowEditor.Editor
 {
     public class PortElement : PortView
     {

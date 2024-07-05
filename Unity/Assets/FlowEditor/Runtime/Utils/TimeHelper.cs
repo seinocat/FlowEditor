@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace FlowEditor.Runtime
+namespace SeinoCat.FlowEditor.Runtime
 {
     public static class TimeHelper
     {

@@ -1,7 +1,7 @@
 ﻿using System;
 using Sirenix.OdinInspector;
 
-namespace FlowEditor.Runtime
+namespace SeinoCat.FlowEditor.Runtime
 {
     // 注意：自动生成代码，请勿手动修改
     [Serializable]

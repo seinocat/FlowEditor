@@ -1,8 +1,8 @@
-﻿using FlowEditor.Runtime;
-using GraphProcessor;
+﻿using GraphProcessor;
+using SeinoCat.FlowEditor.Runtime;
 using UnityEngine;
 
-namespace FlowEditor.Editor
+namespace SeinoCat.FlowEditor.Editor
 {
     [NodeMenuItem((int)FlowNodeType.CompleteFlag), FlowNode, System.Serializable]
     public class CompleteFlagNode : ServerNodeBase

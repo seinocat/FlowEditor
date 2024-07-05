@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace FlowEditor.Editor
+namespace SeinoCat.FlowEditor.Editor
 {
     [Serializable]
     public class FlowNodePort {}

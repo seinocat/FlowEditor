@@ -1,9 +1,9 @@
-﻿using FlowEditor.Runtime;
+﻿using SeinoCat.FlowEditor.Runtime;
 using UnityEditor.Experimental.GraphView;
 using UnityEngine;
 using UnityEngine.UIElements;
 
-namespace FlowEditor.Editor
+namespace SeinoCat.FlowEditor.Editor
 {
     public sealed class FlowMiniMapView : MiniMap
     {

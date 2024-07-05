@@ -1,8 +1,8 @@
-﻿using FlowEditor.Editor;
-using FlowEditor.Runtime;
+﻿using SeinoCat.FlowEditor.Editor;
 using GraphProcessor;
+using SeinoCat.FlowEditor.Runtime;
 
-namespace FlowEditor.Editor
+namespace SeinoCat.FlowEditor.Editor
 {
     [NodeMenuItem((int)FlowNodeType.GiveItems), FlowNode, System.Serializable]
     public class GiveItemsNode : ServerNodeBase

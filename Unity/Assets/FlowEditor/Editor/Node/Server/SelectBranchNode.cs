@@ -1,11 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
-using FlowEditor.Runtime;
 using GraphProcessor;
+using SeinoCat.FlowEditor.Runtime;
 using UnityEngine;
 
 
-namespace FlowEditor.Editor
+namespace SeinoCat.FlowEditor.Editor
 {
     [NodeMenuItem((int)FlowNodeType.SelectBranch), FlowNode, System.Serializable]
     public class SelectBranchNode : ServerNodeBase

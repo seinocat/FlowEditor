@@ -1,7 +1,7 @@
 ﻿using System;
 using UnityEngine;
 
-namespace FlowEditor.Runtime
+namespace SeinoCat.FlowEditor.Runtime
 {
     [Serializable]
     public enum TriggerType

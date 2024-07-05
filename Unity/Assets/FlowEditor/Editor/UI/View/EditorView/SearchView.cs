@@ -1,6 +1,6 @@
 ﻿using UnityEngine.UIElements;
 
-namespace FlowEditor.Editor
+namespace SeinoCat.FlowEditor.Editor
 {
     public class SearchView : VisualElement
     {

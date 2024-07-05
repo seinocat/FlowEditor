@@ -1,10 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
-using FlowEditor.Runtime;
 using GraphProcessor;
+using SeinoCat.FlowEditor.Runtime;
 using UnityEngine;
 
-namespace FlowEditor.Editor
+namespace SeinoCat.FlowEditor.Editor
 {
 
     [NodeMenuItem("配置/事件配置"), FlowNode, Serializable]

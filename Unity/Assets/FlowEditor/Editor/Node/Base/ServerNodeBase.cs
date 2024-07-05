@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-namespace FlowEditor.Editor
+namespace SeinoCat.FlowEditor.Editor
 {
     public abstract class ServerNodeBase : FlowNodeBase
     {

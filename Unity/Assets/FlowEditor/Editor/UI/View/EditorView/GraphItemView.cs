@@ -2,11 +2,11 @@
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
-using FlowEditor.Runtime;
+using SeinoCat.FlowEditor.Runtime;
 using UnityEngine;
 using UnityEngine.UIElements;
 
-namespace FlowEditor.Editor
+namespace SeinoCat.FlowEditor.Editor
 {
     public class GraphItemView : VisualElement
     {

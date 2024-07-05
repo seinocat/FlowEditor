@@ -1,10 +1,10 @@
 ﻿using System.Collections.Generic;
-using FlowEditor.Runtime;
+using SeinoCat.FlowEditor.Runtime;
 using Sirenix.OdinInspector;
 using Sirenix.OdinInspector.Editor;
 using UnityEditor;
 
-namespace FlowEditor.Editor
+namespace SeinoCat.FlowEditor.Editor
 {
     public class NodeTypeEditorWindow : OdinEditorWindow
     {

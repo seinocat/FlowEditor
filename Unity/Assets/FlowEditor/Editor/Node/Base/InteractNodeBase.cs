@@ -1,4 +1,4 @@
-﻿namespace FlowEditor.Editor
+﻿namespace SeinoCat.FlowEditor.Editor
 {
     public class InteractNodeBase : FlowNodeBase
     {

@@ -4,7 +4,7 @@ using UnityEditor.Experimental.GraphView;
 using UnityEditor.UIElements;
 using UnityEngine.UIElements;
 
-namespace FlowEditor.Editor
+namespace SeinoCat.FlowEditor.Editor
 {
     [NodeCustomEditor(typeof(SelectBranchNode))]
     public class SelectBranchNodeView : BaseNodeView

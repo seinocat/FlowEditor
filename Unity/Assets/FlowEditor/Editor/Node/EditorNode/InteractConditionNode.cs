@@ -1,9 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
-using FlowEditor.Runtime;
 using GraphProcessor;
+using SeinoCat.FlowEditor.Runtime;
 
-namespace FlowEditor.Editor
+namespace SeinoCat.FlowEditor.Editor
 {
 
     [NodeMenuItem("配置/交互条件配置"), FlowNode, Serializable]

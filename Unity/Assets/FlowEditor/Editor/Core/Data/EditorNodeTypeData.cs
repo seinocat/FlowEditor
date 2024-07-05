@@ -1,8 +1,8 @@
 ﻿using System;
-using FlowEditor.Runtime;
+using SeinoCat.FlowEditor.Runtime;
 using Sirenix.OdinInspector;
 
-namespace FlowEditor.Editor
+namespace SeinoCat.FlowEditor.Editor
 {
     [Serializable]
     public class EditorNodeTypeBase

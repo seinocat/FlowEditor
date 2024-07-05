@@ -1,13 +1,13 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Reflection;
-using FlowEditor.Runtime;
 using GraphProcessor;
+using SeinoCat.FlowEditor.Runtime;
 using UnityEditor;
 using UnityEditor.Experimental.GraphView;
 using UnityEngine;
 
-namespace FlowEditor.Editor
+namespace SeinoCat.FlowEditor.Editor
 {
     public class FlowGraphView : BaseGraphView
     {
@@ -25,9 +25,9 @@ namespace FlowEditor.Editor
         public FlowGraphView(FlowGraphWindow window) : base(window)
         {
             this.Window = window;
-            this.FolderOpen = AssetDatabase.LoadAssetAtPath<Sprite>("Assets/FlowEditor/Resource/Icon/folder1.png");
-            this.FolderClose = AssetDatabase.LoadAssetAtPath<Sprite>("Assets/FlowEditor/Resource/Icon/folder0.png");
-            this.GraphIcon = AssetDatabase.LoadAssetAtPath<Sprite>("Assets/FlowEditor/Resource/Icon/graph.png");
+            this.FolderOpen = Resources.Load<Sprite>("Icon/folder1");
+            this.FolderClose = Resources.Load<Sprite>("Icon/folder0");
+            this.GraphIcon = Resources.Load<Sprite>("Icon/graph");
             
             Insert(0, new GraphGridView());
         }

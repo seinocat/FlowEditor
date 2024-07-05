@@ -1,8 +1,8 @@
 ﻿using GraphProcessor;
-using FlowEditor.Runtime;
+using SeinoCat.FlowEditor.Runtime;
 using UnityEngine;
 
-namespace FlowEditor.Editor
+namespace SeinoCat.FlowEditor.Editor
 {
     public class FlowToolBarView : ToolbarView
     {

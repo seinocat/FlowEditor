@@ -1,11 +1,11 @@
 ﻿using System.Collections.Generic;
-using FlowEditor.Runtime;
 using GraphProcessor;
+using SeinoCat.FlowEditor.Runtime;
 using UnityEditor;
 using UnityEditor.Callbacks;
 using UnityEngine;
 
-namespace FlowEditor.Editor
+namespace SeinoCat.FlowEditor.Editor
 {
     public class FlowGraphWindow : BaseGraphWindow
     {

@@ -6,7 +6,7 @@ using System.Text;
 using GraphProcessor;
 using UnityEditor;
 
-namespace FlowEditor.Editor
+namespace SeinoCat.FlowEditor.Editor
 {
     public static class FlowUtils
     {

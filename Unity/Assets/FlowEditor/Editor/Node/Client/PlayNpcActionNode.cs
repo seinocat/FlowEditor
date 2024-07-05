@@ -1,7 +1,7 @@
-﻿using FlowEditor.Runtime;
-using GraphProcessor;
+﻿using GraphProcessor;
+using SeinoCat.FlowEditor.Runtime;
 
-namespace FlowEditor.Editor
+namespace SeinoCat.FlowEditor.Editor
 {
     [NodeMenuItem((int)FlowNodeType.PlayNpcAction), FlowNode, System.Serializable]
     public class PlayNpcActionNode : ClientNodeBase

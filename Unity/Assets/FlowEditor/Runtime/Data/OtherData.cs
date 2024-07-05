@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using Sirenix.OdinInspector;
 
-namespace FlowEditor.Runtime
+namespace SeinoCat.FlowEditor.Runtime
 {
     [Serializable]
     public class SelectData

@@ -1,8 +1,8 @@
 ﻿using System.Collections.Generic;
-using FlowEditor.Runtime;
 using GraphProcessor;
+using SeinoCat.FlowEditor.Runtime;
 
-namespace FlowEditor.Editor
+namespace SeinoCat.FlowEditor.Editor
 {
     [NodeMenuItem((int)FlowNodeType.RemoveItem), FlowNode, System.Serializable]
     public class RemoveItemNode : ServerNodeBase

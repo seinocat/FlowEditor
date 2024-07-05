@@ -2,11 +2,11 @@
 using System.Collections.Generic;
 using System.Reflection;
 using System.Text;
-using FlowEditor.Runtime;
+using SeinoCat.FlowEditor.Runtime;
 using Sirenix.OdinInspector;
 using UnityEngine;
 
-namespace FlowEditor.Editor
+namespace SeinoCat.FlowEditor.Editor
 {
     public static class NodeTypeUtils
     {

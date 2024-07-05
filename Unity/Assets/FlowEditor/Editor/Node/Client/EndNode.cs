@@ -1,9 +1,9 @@
 ﻿using System;
-using FlowEditor.Runtime;
 using GraphProcessor;
+using SeinoCat.FlowEditor.Runtime;
 using UnityEngine;
 
-namespace FlowEditor.Editor
+namespace SeinoCat.FlowEditor.Editor
 {
 
     [NodeMenuItem((int)FlowNodeType.End), FlowNode, Serializable]

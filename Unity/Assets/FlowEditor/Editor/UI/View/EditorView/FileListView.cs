@@ -4,14 +4,14 @@ using System.Diagnostics;
 using System.IO;
 using System.Reflection;
 using System.Text.RegularExpressions;
-using FlowEditor.Runtime;
 using Seino.Utils;
+using SeinoCat.FlowEditor.Runtime;
 using UnityEditor;
 using UnityEditor.Experimental.GraphView;
 using UnityEngine;
 using UnityEngine.UIElements;
 
-namespace FlowEditor.Editor
+namespace SeinoCat.FlowEditor.Editor
 {
     public sealed class FileListView : Blackboard
     {
@@ -342,8 +342,6 @@ namespace FlowEditor.Editor
                 x.DrawView();
             });
         }
-
-        
         
         #endregion
         
@@ -482,7 +480,6 @@ namespace FlowEditor.Editor
         
         public void MenuPopulate(GraphItemView view, ContextualMenuPopulateEvent evt)
         {
-            // 清空默认的右键菜单
             evt.menu.MenuItems().Clear();
 
             if (this.m_SelectedList.Count <= 1)
@@ -581,7 +578,6 @@ namespace FlowEditor.Editor
                 });
             }
             
-            // 阻止默认的右键菜单显示
             evt.StopPropagation();
         }
 

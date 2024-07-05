@@ -1,8 +1,8 @@
 ﻿using System;
-using FlowEditor.Runtime;
 using GraphProcessor;
+using SeinoCat.FlowEditor.Runtime;
 
-namespace FlowEditor.Editor
+namespace SeinoCat.FlowEditor.Editor
 {
 
     [NodeMenuItem("配置/交互配置"), FlowNode, Serializable]
